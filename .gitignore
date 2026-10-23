@@ -1,0 +1,11 @@
+# Fichiers générés par `task` (Quarto, xelatex, Task)
+.task/
+.quarto/
+rapport_hackavp.pdf
+rapport_hackavp_files/
+rapport_hackavp.tex
+*.aux
+*.log
+*.toc
+*.out
+.DS_Store

@@ -1,0 +1,45 @@
+# Build du rapport HackAVP : `task` (ou `task pdf`)
+version: "3"
+
+vars:
+  RAPPORT: rapport_hackavp
+
+tasks:
+  default:
+    desc: Construit le rapport PDF
+    cmds:
+      - task: pdf
+
+  check:
+    desc: Vérifie les outils et les paquets R nécessaires
+    cmds:
+      - quarto --version
+      - xelatex --version | head -n 1
+      - |
+        Rscript -e 'p <- c("DBI","duckdb","dplyr","tidyr","ggplot2","forcats","stringr","knitr","rmarkdown","scales"); m <- p[!vapply(p, requireNamespace, logical(1), quietly = TRUE)]; if (length(m)) stop("Paquets R manquants : ", paste(m, collapse = ", ")) else cat("Paquets R : OK\n")'
+
+  pdf:
+    desc: Rend le rapport en PDF (xelatex)
+    deps: [check]
+    sources:
+      - "{{.RAPPORT}}.qmd"
+      - "*_grille_hackavp_notation.csv"
+      - grille_hackavp_notation.csv
+      - detection_ia_articles.csv
+      - jury.csv
+      - assets/*
+    generates:
+      - "{{.RAPPORT}}.pdf"
+    cmds:
+      - quarto render {{.RAPPORT}}.qmd --to pdf
+
+  open:
+    desc: Ouvre le PDF
+    deps: [pdf]
+    cmds:
+      - xdg-open {{.RAPPORT}}.pdf
+
+  clean:
+    desc: Supprime les fichiers générés
+    cmds:
+      - rm -rf {{.RAPPORT}}.pdf {{.RAPPORT}}_files {{.RAPPORT}}.tex .quarto
