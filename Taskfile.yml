@@ -26,6 +26,7 @@ tasks:
       - "*_grille_hackavp_notation.csv"
       - grille_hackavp_notation.csv
       - detection_ia_articles.csv
+      - reactions_articles.csv
       - jury.csv
       - prix_du_jury.csv
       - vote_prix_du_jury.csv

@@ -800,6 +800,57 @@ ggplot(rel, aes(x = x, y = moyenne)) +
 
 La note consensuelle n'a **pas de lien net avec la part d'IA** mesurée (corrélation de `r fr(r_ia)`). Elle suit en revanche **la longueur de l'article** (corrélation de `r fr(r_mots)`) : les articles les plus courts sont les moins bien notés. La longueur reflète en partie le travail de rédaction, mais elle ne suffit pas à mesurer la qualité.
 
+# Réactions des lecteurs sur dev.to
+
+```{r reactions}
+rea <- q("
+SELECT \"N°\"::INT AS num, \"Réactions\"::INT AS reactions, \"Commentaires\"::INT AS commentaires,
+       \"Date de publication\" AS publication, \"Date de mesure\" AS mesure
+FROM read_csv('reactions_articles.csv', all_varchar = true)
+") |> left_join(projets, by = "num")
+date_rea <- format(as.Date(max(rea$mesure)), "%d/%m/%Y")
+r_rea <- cons |> inner_join(select(rea, num, reactions), by = "num") |>
+  with(cor(reactions, moyenne))
+anciens <- filter(rea, as.Date(publication) < as.Date("2026-10-01"))
+```
+
+::: {.callout-note}
+## Indicateur en plus des 100 points
+Le nombre de réactions (cœurs, licornes, etc.) et de commentaires de chaque article est relevé sur l'API publique de dev.to (`public_reactions_count`, `comments_count`), le `r date_rea`. Il **ne s'ajoute pas** à la note /100 et n'entre dans aucun classement : il mesure l'écho de l'article auprès des lecteurs, pas la qualité du projet. Les compteurs évoluent ; ils incluent les réactions des participants et du jury.
+:::
+
+```{r fig-reactions, fig.height=4.2}
+#| fig-cap: "Réactions et commentaires de chaque article sur dev.to (articles : voir le tableau des projets, par numéro)"
+rea_long <- rea |>
+  mutate(label = fct_reorder(label, reactions + commentaires / 100)) |>
+  pivot_longer(c(reactions, commentaires), names_to = "type", values_to = "n") |>
+  mutate(type = recode(type, reactions = "Réactions", commentaires = "Commentaires"))
+
+ggplot(rea_long, aes(x = n, y = label)) +
+  geom_col(aes(fill = type), position = position_dodge(width = 0.75), width = 0.65) +
+  geom_text(aes(label = n, group = type), position = position_dodge(width = 0.75),
+            hjust = -0.3, size = 2.6, colour = pal$ink2, family = "Inter") +
+  scale_fill_manual(values = c("Réactions" = pal$s1, "Commentaires" = pal$s3)) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.08))) +
+  labs(title = "Réactions et commentaires sur dev.to",
+       subtitle = paste0("Relevé du ", date_rea),
+       x = "Nombre", y = NULL) +
+  theme_hack()
+```
+
+```{r tab-reactions}
+rea |>
+  arrange(desc(reactions), desc(commentaires)) |>
+  mutate(rang = min_rank(desc(reactions)),
+         publication = format(as.Date(publication), "%d/%m/%Y")) |>
+  select(rang, num, lien_court, piste, publication, reactions, commentaires) |>
+  rename(Rang = rang, `N°` = num, Projet = lien_court, Piste = piste,
+         `Publié le` = publication, `Réactions` = reactions, Commentaires = commentaires) |>
+  kable(caption = paste0("Réactions et commentaires des articles sur dev.to, au ", date_rea))
+```
+
+`r lp(rea$num[rea$reactions == max(rea$reactions)])` recueille le plus de réactions (`r max(rea$reactions)`). Le nombre de réactions est `r ifelse(abs(r_rea) < 0.3, "peu lié", "lié")` à la note consensuelle (corrélation de `r fr(r_rea)`). `r if (nrow(anciens)) paste0("L'article ", lp(anciens$num), " a été publié bien avant les autres (", paste(format(as.Date(anciens$publication), "%d/%m/%Y"), collapse = ", "), ") : la comparaison avec les autres articles est donc à prendre avec prudence.") else ""`
+
 # Annexe : notes détaillées
 
 ```{r tab-annexe}

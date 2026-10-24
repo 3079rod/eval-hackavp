@@ -21,6 +21,7 @@ Le dépôt contient une grille de notation commune et une copie de cette grille 
 | `fable-5_grille_hackavp_notation.csv` | Évaluation par Claude Fable 5 |
 | `detection_ia_articles.csv` | Part de texte généré par IA dans chaque article, selon ZeroGPT (article entier) et Pangram (extrait), mesurée le 23/10/2026 |
 | `methode_detection_ia.md` | Méthode, contrôles et limites de cette mesure |
+| `reactions_articles.csv` | Réactions et commentaires de chaque article sur dev.to (API publique, `public_reactions_count` et `comments_count`), avec la date du relevé. Indicateur à part : il ne s'ajoute pas à la note /100 |
 | `jury.csv` | Composition du jury : identifiant (préfixe du fichier de grille), nom, type, profil LinkedIn |
 | `prix_du_jury.csv` | Projet proposé pour le prix du jury (coup de cœur), qui l'a proposé et pourquoi |
 | `vote_prix_du_jury.csv` | Vote de chaque juré humain sur le prix du jury (`Pour`, `Contre`, `Abstention`) |
