@@ -22,10 +22,44 @@ Le dépôt contient une grille de notation commune et une copie de cette grille 
 | `detection_ia_articles.csv` | Part de texte généré par IA dans chaque article, selon ZeroGPT (article entier) et Pangram (extrait), mesurée le 23/10/2026 |
 | `methode_detection_ia.md` | Méthode, contrôles et limites de cette mesure |
 | `jury.csv` | Composition du jury : identifiant (préfixe du fichier de grille), nom, type, profil LinkedIn |
+| `prix_du_jury.csv` | Projet proposé pour le prix du jury (coup de cœur), qui l'a proposé et pourquoi |
+| `vote_prix_du_jury.csv` | Vote de chaque juré humain sur le prix du jury (`Pour`, `Contre`, `Abstention`) |
+| `transcripts/` | Sous-titres automatiques français des 11 vidéos (`.vtt`), utilisés par les modèles |
 | `rapport_hackavp.qmd` | Rapport Quarto (R, DuckDB, ggplot2) : classements, accord entre évaluateurs, détection IA |
 | `Taskfile.yml` | Build du rapport PDF avec Task et xelatex |
 
 Les fichiers s'appellent `<evaluateur>_grille_hackavp_notation.csv`. Dans `<evaluateur>`, les points de version sont remplacés par des `_` : `opus-5_5`, `sonnet-5_5`, `adriens`. Cette convention permet aux requêtes ci-dessous de lire toutes les évaluations d'un coup.
+
+## Le modèle de grille et comment noter
+
+`grille_hackavp_notation.csv` est le fichier d'exemple : la grille sur 100, **vierge**, que chaque évaluateur copie pour noter. Il contient :
+
+- les **11 soumissions**, une par ligne, avec leurs colonnes d'identification déjà remplies : `N°`, `Projet`, `Auteur`, `Profil auteur`, `Piste`, `Article dev.to`, `Vidéo YouTube` ;
+- les **22 colonnes de critères**, vides, dont l'en-tête indique le maximum (`(/4)`, `(/8)`…) ;
+- `TOTAL /100` et `Commentaires`, vides ;
+- `Conflit d'intérêt`, rempli pour les n° 9 et 10 (soumissions de l'organisateur).
+
+On ne note **jamais** dans le modèle lui-même : il sert de point de départ commun, et le rapport l'utilise comme référence pour la liste des projets et l'ordre des critères.
+
+### Ajouter un membre du jury
+
+1. **Copier le modèle** sans écraser une grille existante, en préfixant le fichier par l'identifiant du juré :
+
+   ```sh
+   cp --update=none grille_hackavp_notation.csv marc-rodrigues_grille_hackavp_notation.csv
+   ```
+
+2. **Déclarer le juré** dans `jury.csv` s'il n'y est pas : la colonne `identifiant` doit être exactement le préfixe du fichier (`marc-rodrigues`).
+3. **Noter** dans un tableur (LibreOffice, Excel) ou un éditeur de texte :
+   - remplir les 22 critères sans dépasser le maximum de l'en-tête ; les demi-points sont permis (`2.5`, avec un point) ;
+   - laisser **vide** un critère non évalué (vide n'est pas zéro) et le signaler dans le commentaire ;
+   - `TOTAL /100` = somme des notes renseignées ;
+   - justifier les notes dans `Commentaires` en quelques phrases ;
+   - ne pas toucher aux colonnes d'identification ni à `Conflit d'intérêt`. L'organisateur ne note pas les n° 9 et 10 ; tous les autres jurés les notent.
+4. **Enregistrer en CSV** en gardant le format (UTF-8, séparateur virgule, une ligne d'en-tête et 11 lignes).
+5. **Relancer `task`** : le rapport intègre la grille automatiquement et passe le juré de « En attente » à « Reçue ».
+
+Une ligne dont `TOTAL /100` est vide est considérée comme non notée : un juré peut donc rendre une grille partielle.
 
 ## Format du CSV
 
