@@ -46,6 +46,10 @@ knitr:
     fig.align: "center"
 ---
 
+> **Barème sur 100 :** toutes les grilles, celles du jury comme celles des modèles,
+> se remplissent sur 100 (colonne `TOTAL /100`), à partir du modèle `grille_hackavp_notation.csv`.
+> Une grille restée sur l'ancien barème /20 est ignorée.
+
 ```{r setup}
 suppressPackageStartupMessages({
   library(DBI); library(duckdb); library(dplyr); library(tidyr)
@@ -89,6 +93,7 @@ x("
 CREATE OR REPLACE VIEW raw AS
 SELECT regexp_extract(filename, '([^/]+)_grille_hackavp_notation\\.csv$', 1) AS evaluateur, *
 FROM read_csv('*_grille_hackavp_notation.csv', filename = true, union_by_name = true, all_varchar = true)
+WHERE \"TOTAL /100\" IS NOT NULL
 ")
 x("
 CREATE OR REPLACE VIEW notes AS
@@ -102,6 +107,8 @@ CREATE OR REPLACE VIEW projets AS
 SELECT DISTINCT \"N°\"::INT AS num, Projet AS projet, Auteur AS auteur, Piste AS piste, \"Article dev.to\" AS url, \"Profil auteur\" AS profil
 FROM read_csv('grille_hackavp_notation.csv', all_varchar = true)
 ")
+bareme <- 100
+n_crit <- length(str_subset(names(q("SELECT * FROM read_csv('grille_hackavp_notation.csv', all_varchar = true) LIMIT 0")), "\\(/[0-9]\\)$"))
 x("
 CREATE OR REPLACE VIEW totaux AS
 SELECT evaluateur, num, sum(note) AS total, count(*) AS nb_criteres
@@ -136,7 +143,7 @@ nom_eval <- function(ev) {
 tot <- q("SELECT * FROM totaux") |>
   left_join(projets, by = "num") |>
   mutate(type = type_eval(evaluateur), nom = nom_eval(evaluateur),
-         complet = nb_criteres == 9)
+         complet = nb_criteres == n_crit)
 
 conflit <- c(9, 10)  # soumissions de l'organisateur
 notes_conflit <- local({
@@ -147,8 +154,12 @@ notes_conflit <- local({
 })
 inc <- filter(tot, !complet)
 incompletes <- if (nrow(inc) == 0) "aucune" else
-  paste(paste0(inc$nom, " sur ", projets$lien[match(inc$num, projets$num)],
-               " (", inc$nb_criteres, " critères sur 9)"), collapse = " ; ")
+  inc |> group_by(nom) |>
+    summarise(n = n(), mini = min(nb_criteres), maxi = max(nb_criteres), .groups = "drop") |>
+    mutate(txt = paste0(nom, " sur ", n, " projet(s) (",
+                        ifelse(mini == maxi, mini, paste0(mini, " à ", maxi)),
+                        " critères sur ", n_crit, ")")) |>
+    pull(txt) |> paste(collapse = " ; ")
 
 # --- Note consensuelle, rangs et gagnants -------------------------------------
 cons <- tot |>
@@ -164,7 +175,7 @@ gagnants <- cons |> filter(rang_piste == 1) |> arrange(piste)
 # Gagnant(s) d'une track, en texte cliquable (gère les ex æquo)
 gagnant <- function(p) {
   g <- filter(gagnants, piste == p)
-  paste0(paste(g$lien, collapse = " et "), " (", fr(g$moyenne[1]), "/20",
+  paste0(paste(g$lien, collapse = " et "), " (", fr(g$moyenne[1]), "/100",
          ifelse(nrow(g) > 1, ", ex æquo", ""), ")")
 }
 
@@ -183,12 +194,34 @@ n_mod_r  <- sum(type_eval(recues) == "Modèle IA")
 
 prix_ok <- file.exists("prix_du_jury.csv")
 prix_s  <- if (prix_ok) q("SELECT * FROM read_csv('prix_du_jury.csv', all_varchar = true)") else NULL
+if (prix_ok && nrow(prix_s) == 0) prix_ok <- FALSE
+
+# Vote du prix du jury : membres du jury humains uniquement, un vote par juré
+votes <- tibble(identifiant = jury_ids, Juré = nom_eval(jury_ids)) |>
+  left_join(
+    if (file.exists("vote_prix_du_jury.csv"))
+      q("SELECT * FROM read_csv('vote_prix_du_jury.csv', all_varchar = true)") |>
+        select(identifiant, vote = 3, commentaire = 4)
+    else tibble(identifiant = character(), vote = character(), commentaire = character()),
+    by = "identifiant") |>
+  mutate(vote = str_to_sentence(str_trim(coalesce(vote, ""))),
+         vote = ifelse(vote %in% c("Pour", "Contre", "Abstention"), vote, "En attente"),
+         commentaire = coalesce(commentaire, ""))
+n_pour     <- sum(votes$vote == "Pour")
+n_contre   <- sum(votes$vote == "Contre")
+n_abst     <- sum(votes$vote == "Abstention")
+n_attente  <- sum(votes$vote == "En attente")
+majorite   <- n_jury %/% 2 + 1
+statut_prix <- if (!prix_ok) "à désigner" else if (n_pour >= majorite) "attribué" else
+  if (n_pour + n_attente < majorite) "rejeté" else "vote en cours"
+decompte <- paste0(n_pour, " pour, ", n_contre, " contre, ", n_abst, " abstention(s), ",
+                   n_attente, " en attente")
 
 ligne <- function(distinction, d) tibble(
   Distinction = distinction,
   Projet = paste(d$lien, collapse = " et "),
   Track  = paste(unique(d$piste), collapse = " / "),
-  `Moyenne /20` = if (nrow(d)) fr(d$moyenne[1]) else "—",
+  `Moyenne /100` = if (nrow(d)) fr(d$moyenne[1]) else "—",
   `Ex æquo` = ifelse(nrow(d) > 1, "oui", ""))
 
 resultats <- bind_rows(
@@ -197,11 +230,12 @@ resultats <- bind_rows(
   ligne("1er global", filter(cons, rang_global == 1)),
   ligne("2e global",  filter(cons, rang_global == 2)),
   ligne("3e global",  filter(cons, rang_global == 3)),
-  if (prix_ok && nrow(prix_s) > 0) {
+  if (prix_ok) {
     d <- filter(cons, num %in% as.integer(prix_s$`N°`))
-    mutate(ligne("Prix du jury", d), `Moyenne /20` = "—", `Ex æquo` = "")
+    mutate(ligne(paste0("Prix du jury (", statut_prix, " : ", n_pour, " voix pour sur ", n_jury, ")"), d),
+           `Moyenne /100` = "—", `Ex æquo` = "")
   } else tibble(Distinction = "Prix du jury", Projet = "À désigner",
-                Track = "—", `Moyenne /20` = "—", `Ex æquo` = "")
+                Track = "—", `Moyenne /100` = "—", `Ex æquo` = "")
 ) |> filter(Projet != "")
 
 # Égalités qui touchent une distinction (podium global ou tête de track)
@@ -226,7 +260,8 @@ dec <- c(
   if (n_jury_r < n_jury) paste0("**Classement officiel** : la note consensuelle compte aujourd'hui les modèles d'IA au même poids qu'un juré. Décider si le classement officiel se calcule sur les seules notes du jury (", n_jury - n_jury_r, " grille(s) encore attendue(s))."),
   if (nrow(egalites)) paste0("**Égalités** : ", paste(egalites$txt, collapse = " ; "), ". Fixer une règle de départage."),
   if (nrow(inc)) paste0("**Notes incomplètes** : ", incompletes, ". Les compléter ou les exclure du calcul."),
-  if (!prix_ok) "**Prix du jury** : définir ses modalités et désigner le lauréat (coup de cœur).",
+  if (!prix_ok) "**Prix du jury** : définir ses modalités et désigner le lauréat (coup de cœur)."
+  else if (statut_prix == "vote en cours") paste0("**Prix du jury** : ", lp(as.integer(prix_s$`N°`)), " est proposé par ", prix_s$`Proposé par`[1], ". Vote du jury : ", decompte, ". Il faut ", majorite, " voix pour sur ", n_jury, " (`vote_prix_du_jury.csv`)."),
   "**Détection de contenu IA** : mesure indicative (section dédiée). Décider si elle est utilisée, et comment, dans la délibération.")
 cat(paste0("- ", dec, collapse = "\n"), "\n")
 ```
@@ -271,13 +306,12 @@ roster |>
 
 # Données et méthode
 
-Chaque grille note les soumissions sur 20 points, en 9 critères :
+Chaque grille note les soumissions sur 100 points, en `r n_crit` critères :
 
-- Problème et solution (/4)
-- Solution et pertinence (/4)
-- Interopérabilité : schéma d'architecture (/1), solutions externes (/1), autres MicroStartups (/2)
-- Usage des données et de l'IA (/3)
-- Structure et slides (/2), qualité de l'oral (/2), respect du temps (/1)
+- **Socle (/40)** : créativité et esthétique (/4), UX et utilisabilité (/5), accessibilité (/4), adéquation moyens/résultats (/5), standards et Open Data (/6), storytelling (/4), réutilisabilité et essaimage (/4), plaisir de lecture (/4), plaisir de visionnage (/4)
+- **Technicité (/25)** : pertinence des ressources (/8), intégrabilité (/8), maintenabilité (/5), interaction inédite (/4, bonus)
+- **Valeur RH (/25)** : qualité du matching, documents générés, restitution, facilité de création, effet sur la décision (/5 chacun)
+- **Track (/10)** : chaîne de matching (/4), architecture ou frameworks Open Source (/2), déployabilité ou licences (/2), intégrations ou accessibilité hardware (/2) ; lus selon la piste (SaaS : orchestration, IaC, intégrations ; onPrem : chaîne locale, licences, hardware)
 
 Règles de lecture :
 
@@ -311,10 +345,10 @@ plot_track <- function(p = NULL) {
     geom_point(data = c_p, aes(x = moyenne, y = label),
                shape = 124, size = 6, colour = pal$ink) +
     scale_colour_manual(values = type_cols) +
-    scale_x_continuous(limits = c(0, 20), breaks = seq(0, 20, 4)) +
+    scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 20)) +
     labs(title = if (is.null(p)) "Toutes tracks confondues : notes par projet" else paste("Track", p, ": notes par projet"),
          subtitle = "Un point par évaluateur ; le trait noir marque la note consensuelle (moyenne)",
-         x = "Note totale /20", y = NULL,
+         x = "Note totale /100", y = NULL,
          caption = "La barre grise couvre l'écart entre la note la plus basse et la plus haute.") +
     theme_hack()
 }
@@ -324,18 +358,34 @@ tab_track <- function(p) {
   filter(cons, piste == p) |>
     arrange(rang_piste) |>
     transmute(Rang = rang_piste, Projet = lien,
-              `Moyenne /20` = fr(moyenne), `Écart-type` = fr(ecart_type),
+              `Moyenne /100` = fr(moyenne), `Écart-type` = fr(ecart_type),
               Min = fr(min, 1), Max = fr(max, 1), `Évaluateurs` = n) |>
     kable(align = "rlrrrrr", caption = paste("Classement de la track", p, "(note consensuelle)"))
 }
 n_track <- function(p) sum(cons$piste == p)
+
+# Note de chaque évaluateur sur les projets d'une track (jury d'abord, puis modèles)
+tab_eval_track <- function(p) {
+  c_p <- filter(cons, piste == p)
+  t <- tot |>
+    filter(piste == p) |>
+    mutate(total = ifelse(complet, fr(total, 1), paste0(fr(total, 1), "\\*"))) |>
+    select(num, nom, total) |>
+    pivot_wider(names_from = nom, values_from = total, values_fill = "—") |>
+    left_join(select(c_p, num, lien, rang_piste, moyenne), by = "num") |>
+    arrange(rang_piste) |>
+    mutate(Moyenne = fr(moyenne, 1)) |>
+    select(Rang = rang_piste, Projet = lien, any_of(evals$nom), Moyenne)
+  kable(t, align = paste0("rl", strrep("r", ncol(t) - 2)),
+          caption = paste("Track", p, ": note /100 de chaque évaluateur (— : non noté ; \\* : note incomplète)"))
+}
 ```
 
 ## Gagnants par track
 
 ```{r tab-gagnants}
 gagnants |>
-  transmute(Track = piste, Projet = lien, `Note moyenne /20` = fr(moyenne),
+  transmute(Track = piste, Projet = lien, `Note moyenne /100` = fr(moyenne),
             `Évaluateurs` = n) |>
   kable(align = "llrr", caption = "Projet en tête de chaque track (note consensuelle)")
 ```
@@ -353,6 +403,10 @@ plot_track("onPrem souverain")
 tab_track("onPrem souverain")
 ```
 
+```{r tab-onprem-eval}
+tab_eval_track("onPrem souverain")
+```
+
 # Classement de la track SaaS no limit
 
 La track **SaaS no limit** réunit `r n_track("SaaS no limit")` projets. Elle est remportée par `r gagnant("SaaS no limit")`.
@@ -366,6 +420,10 @@ plot_track("SaaS no limit")
 tab_track("SaaS no limit")
 ```
 
+```{r tab-saas-eval}
+tab_eval_track("SaaS no limit")
+```
+
 # Classement global, toutes tracks confondues
 
 ```{r global-tete}
@@ -373,7 +431,7 @@ tete <- filter(cons, rang_global == 1)
 global_label <- cons |> mutate(label = paste0(label, " (", str_remove(piste, " souverain| no limit"), ")"))
 ```
 
-Toutes tracks confondues, les `r nrow(cons)` projets sont classés sur leur note consensuelle. Le premier est `r paste(tete$lien, collapse = " et ")` (`r fr(tete$moyenne[1])`/20, track `r tete$piste[1]`).
+Toutes tracks confondues, les `r nrow(cons)` projets sont classés sur leur note consensuelle. Le premier est `r paste(tete$lien, collapse = " et ")` (`r fr(tete$moyenne[1])`/100, track `r tete$piste[1]`).
 
 ```{r fig-global, fig.height=4.8}
 #| fig-cap: "Classement global : notes de chaque évaluateur et note consensuelle, track entre parenthèses (articles : voir le tableau des projets, par numéro)"
@@ -388,9 +446,127 @@ cons <- cons_sauv; tot <- tot_sauv
 cons |>
   arrange(rang_global) |>
   transmute(Rang = rang_global, Projet = lien, Track = piste,
-            `Moyenne /20` = fr(moyenne), `Écart-type` = fr(ecart_type),
+            `Moyenne /100` = fr(moyenne), `Écart-type` = fr(ecart_type),
             Min = fr(min, 1), Max = fr(max, 1)) |>
   kable(align = "rllrrrr", caption = "Classement global, toutes tracks confondues (note consensuelle)")
+```
+
+## Classements alternatifs
+
+La note consensuelle est une moyenne de notes : un évaluateur qui note haut pèse plus qu'un autre. Deux classements complémentaires aident à trancher.
+
+- **Classement par rangs (Borda)** : chaque évaluateur classe les projets qu'il a notés ; un projet reçoit 100 s'il est premier, 0 s'il est dernier (ex æquo : rang moyen). Le score Borda est la moyenne de ces scores. Il ne dépend que de l'ordre, pas de l'échelle de chaque évaluateur.
+- **Classement du jury seul** : la moyenne des seules notes des membres du jury humains, sans les modèles d'IA.
+
+```{r classements-alt}
+borda <- tot |>
+  group_by(evaluateur) |>
+  mutate(n_ev = n(), score = (n_ev - rank(-total, ties.method = "average")) / (n_ev - 1)) |>
+  ungroup() |>
+  group_by(num) |> summarise(borda = 100 * mean(score), n = n(), .groups = "drop") |>
+  left_join(select(cons, num, lien, piste, rang_global), by = "num") |>
+  mutate(rang_borda = min_rank(desc(borda)))
+
+jury_seul <- tot |> filter(type == "Membre du jury") |>
+  group_by(num) |> summarise(moy_jury = mean(total), n_jures = n(), .groups = "drop")
+classement_jury <- select(cons, num, lien, piste, rang_global) |>
+  left_join(jury_seul, by = "num") |>
+  mutate(rang_jury = min_rank(desc(moy_jury)))
+fleche <- function(a, b) ifelse(is.na(a) | is.na(b), "—",
+  ifelse(a == b, "=", ifelse(a < b, paste0("▲ ", b - a), paste0("▼ ", a - b))))
+```
+
+```{r tab-borda}
+borda |>
+  arrange(rang_borda, num) |>
+  transmute(`Rang Borda` = rang_borda, Projet = lien, Track = str_remove(piste, " souverain| no limit"),
+            `Score Borda /100` = fr(borda, 1), `Rang note consensuelle` = rang_global,
+            `Écart` = fleche(rang_borda, rang_global), `Évaluateurs` = n) |>
+  kable(align = "rllrrcr",
+        caption = "Classement par rangs (Borda) ; écart : ▲ le projet gagne des places par rapport à la note consensuelle")
+```
+
+```{r tab-jury-seul}
+#| results: asis
+if (all(is.na(classement_jury$moy_jury))) {
+  cat("*Aucune grille du jury sur 100 n'est encore reçue : le classement du jury seul n'est pas disponible.*\n")
+} else {
+  classement_jury |>
+    arrange(is.na(rang_jury), rang_jury, num) |>
+    transmute(`Rang jury` = ifelse(is.na(rang_jury), "—", as.character(rang_jury)), Projet = lien, Track = str_remove(piste, " souverain| no limit"),
+              `Moyenne jury /100` = ifelse(is.na(moy_jury), "—", fr(moy_jury, 1)),
+              `Jurés` = coalesce(n_jures, 0L), `Rang note consensuelle` = rang_global,
+              `Écart` = fleche(rang_jury, rang_global)) |>
+    kable(align = "rllrrrc",
+          caption = paste0("Classement du jury seul (", n_jury_r, " grille(s) du jury sur ", n_jury,
+                           ") ; — : projet non noté par le jury")) |>
+    print()
+  sans_jury <- filter(classement_jury, is.na(moy_jury))$num
+  if (length(sans_jury))
+    cat("\n\n", lp(sans_jury), " n'", ifelse(length(sans_jury) > 1, "ont", "a"),
+        " pas encore de note du jury : l'organisateur ne note pas ses propres soumissions (conflit d'intérêt), et aucun autre juré n'a encore rendu sa grille.\n", sep = "")
+}
+```
+
+## D'où vient la note : décomposition par bloc
+
+Chaque barre est la note consensuelle d'un projet, découpée selon les quatre blocs de la grille : Socle (/40), Technicité (/25), Valeur RH (/25) et Track (/10). Pour chaque bloc, on fait la moyenne des sous-totaux des évaluateurs du projet ; les segments s'additionnent donc à la note consensuelle.
+
+```{r fig-blocs, fig.height=4.6}
+#| fig-cap: "Note consensuelle par projet, décomposée par bloc de la grille (articles : voir le tableau des projets, par numéro)"
+blocs_niv <- c("Socle", "Technicité", "Valeur RH", "Track")
+blocs <- q("SELECT evaluateur, num, critere, note FROM notes") |>
+  mutate(bloc = factor(str_extract(critere, "^[^:]+") |> str_trim(), levels = blocs_niv)) |>
+  group_by(evaluateur, num, bloc) |> summarise(s = sum(note), .groups = "drop") |>
+  complete(nesting(evaluateur, num), bloc, fill = list(s = 0)) |>
+  group_by(num, bloc) |> summarise(s = mean(s), .groups = "drop") |>
+  left_join(select(global_label, num, label, moyenne), by = "num") |>
+  mutate(label = fct_reorder(label, moyenne),
+         bloc = factor(bloc, levels = rev(blocs_niv)))
+
+ggplot(blocs, aes(x = s, y = label, fill = bloc)) +
+  geom_col(width = 0.7, colour = pal$surface, linewidth = 0.3) +
+  geom_text(aes(label = ifelse(s >= 4, fr(s, 0), "")), position = position_stack(vjust = 0.5),
+            size = 2.5, colour = "#ffffff", family = "Inter") +
+  geom_text(data = distinct(blocs, label, moyenne), aes(x = moyenne + 1, y = label, label = fr(moyenne, 1)),
+            inherit.aes = FALSE, hjust = 0, size = 2.7, colour = pal$ink, family = "Inter") +
+  scale_fill_manual(values = c(Socle = pal$s1, `Technicité` = pal$s2, `Valeur RH` = pal$s3, Track = pal$ink2),
+                    breaks = blocs_niv) +
+  scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 20)) +
+  labs(title = "Composition de la note consensuelle par bloc",
+       subtitle = "Socle /40, Technicité /25, Valeur RH /25, Track /10 ; track entre parenthèses",
+       x = "Note consensuelle /100", y = NULL) +
+  theme_hack()
+```
+
+## Les classements de chaque évaluateur
+
+Les évaluateurs n'utilisent pas la même échelle : certains notent haut, d'autres bas. Comparer leurs **rangs** neutralise cet effet et montre s'ils classent les projets dans le même ordre. Des lignes plates signalent un classement stable ; des lignes qui se croisent, un désaccord.
+
+```{r fig-bump, fig.height=5}
+#| fig-cap: "Rang de chaque projet selon chaque évaluateur (1 = meilleur)"
+rangs <- tot |>
+  group_by(evaluateur) |> mutate(rang = min_rank(desc(total))) |> ungroup() |>
+  mutate(nom = factor(nom, levels = evals$nom),
+         label = global_label$label[match(num, global_label$num)],
+         piste = str_remove(piste, " souverain| no limit"))
+n_eval <- nlevels(rangs$nom)
+bords <- rangs |> group_by(label) |> filter(nom == levels(rangs$nom)[max(as.integer(nom))]) |> ungroup()
+
+ggplot(rangs, aes(x = as.integer(nom), y = rang, group = label, colour = piste)) +
+  geom_line(linewidth = 0.8, alpha = 0.75) +
+  geom_point(size = 2.4) +
+  geom_text(data = bords, aes(label = label), hjust = 0, nudge_x = 0.12, size = 2.4, family = "Inter",
+            show.legend = FALSE) +
+  scale_y_reverse(breaks = 1:11) +
+  scale_x_continuous(breaks = seq_len(n_eval), labels = levels(rangs$nom),
+                     expand = expansion(add = c(0.3, 1.6))) +
+  scale_colour_manual(values = c(onPrem = pal$s1, SaaS = pal$s2)) +
+  labs(title = "Rang de chaque projet selon chaque évaluateur",
+       subtitle = "Chaque évaluateur classe les projets qu'il a notés ; ex æquo au même rang",
+       x = NULL, y = "Rang") +
+  theme_hack() +
+  theme(panel.grid.major.x = element_blank())
 ```
 
 ## Notes de chaque évaluateur
@@ -405,9 +581,9 @@ heat <- tot |>
 
 ggplot(heat, aes(x = nom, y = label, fill = total)) +
   geom_tile(colour = pal$surface, linewidth = 1) +
-  geom_text(aes(label = txt, colour = total > 14), size = 2.8, family = "Inter") +
-  scale_fill_gradient(low = pal$seq_lo, high = pal$seq_hi, limits = c(0, 20),
-                      name = "Note /20") +
+  geom_text(aes(label = txt, colour = total > 70), size = 2.8, family = "Inter") +
+  scale_fill_gradient(low = pal$seq_lo, high = pal$seq_hi, limits = c(0, 100),
+                      name = "Note /100") +
   scale_colour_manual(values = c(`TRUE` = "#ffffff", `FALSE` = pal$ink), guide = "none") +
   labs(title = "Notes totales par projet et par évaluateur",
        subtitle = "Case vide : projet non noté par cet évaluateur",
@@ -417,25 +593,63 @@ ggplot(heat, aes(x = nom, y = label, fill = total)) +
         axis.text.x = element_text(angle = 20, hjust = 1))
 ```
 
+## Profil des projets par critère
+
+La heatmap des totaux dit *qui* est devant ; celle-ci dit **pourquoi** : chaque case est la moyenne des évaluateurs sur un critère, **en part du maximum de ce critère**, pour comparer un critère sur 8 et un critère sur 2.
+
+```{r fig-profil, fig.height=6}
+#| fig-cap: "Note moyenne par projet et par critère, en part du maximum du critère"
+# Ordre des critères : celui de la grille (colonnes du CSV)
+ordre_crit_grille <- names(q("SELECT * FROM raw LIMIT 0")) |>
+  str_subset("\\(/[0-9]\\)$") |> str_remove(" \\(/[0-9]+\\)$")
+
+profil <- q("SELECT num, critere, avg(note) AS moy FROM notes GROUP BY ALL") |>
+  mutate(max = as.numeric(str_extract(critere, "(?<=\\(/)[0-9]+")),
+         pct = moy / max,
+         critere = str_remove(critere, " \\(/[0-9]+\\)$")) |>
+  left_join(select(projets, num, label), by = "num") |>
+  mutate(label = factor(label, levels = cons |> arrange(moyenne) |> pull(label)),
+         critere = factor(critere, levels = ordre_crit_grille))
+
+ggplot(profil, aes(x = critere, y = label, fill = pct)) +
+  geom_tile(colour = pal$surface, linewidth = 1) +
+  geom_text(aes(label = paste0(round(pct * 100), ""), colour = pct > 0.7),
+            size = 1.9, family = "Inter") +
+  scale_fill_gradient(low = pal$seq_lo, high = pal$seq_hi, limits = c(0, 1),
+                      labels = scales::percent, name = "Part du max") +
+  scale_colour_manual(values = c(`TRUE` = "#ffffff", `FALSE` = pal$ink), guide = "none") +
+  labs(title = "Forces et faiblesses : note moyenne en % du maximum de chaque critère",
+       subtitle = "Critères dans l'ordre de la grille ; case vide : critère non évalué",
+       x = NULL, y = NULL) +
+  theme_hack() +
+  theme(panel.grid = element_blank(), legend.position = "right",
+        axis.text.x = element_text(size = 5.5, lineheight = 0.9, angle = 55, hjust = 1, vjust = 1))
+```
+
 # Prix du jury
 
-Le prix du jury récompense le **coup de cœur du jury** pour un projet. Il est indépendant des classements par track et du classement global : un projet peut le recevoir quelle que soit sa note. Ses modalités (critères, mode de désignation, lauréat éventuellement déjà primé ou non) restent à définir par le jury.
+Le prix du jury récompense le **coup de cœur du jury** pour un projet. Il est indépendant des classements par track et du classement global : un projet peut le recevoir quelle que soit sa note.
 
-```{r prix}
-prix <- if (file.exists("prix_du_jury.csv")) q("SELECT * FROM read_csv('prix_du_jury.csv', all_varchar = true)") else NULL
-```
+Il est décidé **par les seuls membres du jury humains** (les modèles d'IA ne votent pas) : un projet est proposé dans `prix_du_jury.csv`, puis chaque juré vote *Pour*, *Contre* ou *Abstention* dans `vote_prix_du_jury.csv`. Le prix est attribué à la **majorité absolue du jury**, soit `r majorite` voix pour sur `r n_jury`.
 
 ```{r tab-prix}
 #| results: asis
-if (is.null(prix) || nrow(prix) == 0) {
-  cat("*Lauréat à désigner lors de la délibération du jury.* Pour l'afficher ici, créer le fichier `prix_du_jury.csv` avec les colonnes `N°` et `Motivation`, puis relancer `task`.\n")
+if (!prix_ok) {
+  cat("*Lauréat à désigner lors de la délibération du jury.* Pour l'afficher ici, créer le fichier `prix_du_jury.csv` avec les colonnes `N°`, `Proposé par` et `Motivation`, puis relancer `task`.\n")
 } else {
-  prix |>
+  prix_s |>
     mutate(num = as.integer(`N°`)) |>
     left_join(projets, by = "num") |>
-    transmute(Projet = lien, Auteur = auteur_lien, Track = piste, Motivation) |>
-    kable(align = "llll", caption = "Prix du jury (coup de cœur)") |>
+    transmute(Projet = lien, Auteur = auteur_lien, Track = piste, `Proposé par`) |>
+    kable(align = "llll", caption = "Projet proposé pour le prix du jury (coup de cœur)") |>
     print()
+  cat("\n\n**Motivation :** ", paste(prix_s$Motivation, collapse = " "), "\n", sep = "")
+  cat("\n\n")
+  votes |>
+    transmute(`Juré` = str_replace_all(Juré, " ", "\u00a0"), Vote = str_replace_all(vote, " ", "\u00a0"), Commentaire = ifelse(commentaire == "", "—", commentaire)) |>
+    kable(align = "lcl", caption = paste0("Vote du jury pour le prix du jury (", decompte, ")")) |>
+    print()
+  cat("\n\n**État du vote :** ", statut_prix, " (", n_pour, " voix pour sur ", majorite, " nécessaires).\n", sep = "")
 }
 ```
 
@@ -468,9 +682,46 @@ ecarts |>
         caption = "Sévérité relative : un écart négatif signifie un évaluateur plus sévère que la moyenne")
 ```
 
+## Les projets qui divisent
+
+```{r divisent}
+divis <- cons |> arrange(desc(ecart_type))
+seuil_div <- 7.5  # écart-type en points /100 au-delà duquel un projet mérite débat
+a_debattre <- filter(divis, ecart_type > seuil_div)
+texte_debat <- if (nrow(a_debattre) == 0)
+  paste0("Aucun projet ne dépasse ", fr(seuil_div, 1), " point d'écart-type : les évaluateurs sont globalement d'accord.") else
+  paste0("Les projets dont l'écart-type dépasse ", fr(seuil_div, 1), " point — ",
+         paste(a_debattre$lien, collapse = ", "),
+         " — sont ceux où le temps de délibération a le plus de valeur, surtout près des frontières de podium.")
+```
+
+L'accord par évaluateur ne dit pas tout : il reste à savoir **sur quels projets les notes s'étalent le plus**. `r texte_debat`
+
+```{r fig-divisent, fig.height=4.6}
+#| fig-cap: "Dispersion des notes totales par projet : un point par évaluateur, trait = étendue min–max"
+ordre_div <- divis |> arrange(ecart_type) |> pull(label)
+disp <- tot |> mutate(label = factor(label, levels = ordre_div))
+etiq <- divis |> mutate(label = factor(label, levels = ordre_div),
+                        txt = paste0("σ = ", fr(ecart_type, 1)))
+
+ggplot(disp, aes(y = label)) +
+  geom_line(aes(x = total, group = label), colour = pal$grid, linewidth = 2.2, lineend = "round") +
+  geom_point(aes(x = total, colour = type, shape = nom), size = 2.6, stroke = 0.7) +
+  geom_text(data = etiq, aes(x = max + 2, label = txt), hjust = 0, size = 2.6,
+            colour = pal$ink2, family = "Inter") +
+  scale_colour_manual(values = type_cols) +
+  scale_x_continuous(limits = c(0, 110), breaks = seq(0, 100, 20)) +
+  labs(title = "Du plus consensuel (bas) au plus clivant (haut)",
+       subtitle = "σ : écart-type des notes totales du projet",
+       x = "Note totale /100", y = NULL) +
+  guides(colour = guide_legend(order = 1), shape = guide_legend(order = 2)) +
+  theme_hack() +
+  theme(legend.box = "vertical")
+```
+
 ## Lecture par critère
 
-```{r fig-criteres, fig.height=4.6}
+```{r fig-criteres, fig.height=6}
 #| fig-cap: "Note moyenne par critère et par évaluateur, en part du maximum"
 crit <- q("SELECT evaluateur, critere, avg(note) AS moy FROM notes GROUP BY ALL") |>
   mutate(max = as.numeric(str_extract(critere, "(?<=\\(/)[0-9]+")),
@@ -483,7 +734,7 @@ ggplot(crit, aes(x = pct, y = factor(critere, levels = ordre_crit))) +
   geom_line(aes(group = critere), colour = pal$grid, linewidth = 2.2, lineend = "round") +
   geom_point(aes(colour = type, shape = nom), size = 2.6, stroke = 0.7) +
   scale_colour_manual(values = type_cols) +
-  scale_x_continuous(labels = scales::percent, limits = c(0.4, 1)) +
+  scale_x_continuous(labels = scales::percent, limits = c(0, 1)) +
   labs(title = "Note moyenne par critère, en % du maximum",
        subtitle = "Chaque forme correspond à un évaluateur",
        x = "Part du maximum du critère", y = NULL) +
@@ -540,10 +791,10 @@ r_mots <- with(filter(rel, str_detect(indic, "Longueur")), cor(x, moyenne))
 ggplot(rel, aes(x = x, y = moyenne)) +
   geom_point(colour = pal$s1, size = 2.6) +
   facet_wrap(~ indic, scales = "free_x") +
-  scale_y_continuous(limits = c(0, 20)) +
+  scale_y_continuous(limits = c(0, 100)) +
   labs(title = "Note consensuelle selon la part d'IA et la longueur de l'article",
        subtitle = paste0("Corrélation : ", fr(r_ia), " avec la part d'IA, ", fr(r_mots), " avec la longueur"),
-       x = NULL, y = "Note consensuelle /20") +
+       x = NULL, y = "Note consensuelle /100") +
   theme_hack()
 ```
 
@@ -561,7 +812,7 @@ tot |>
   arrange(num) |>
   select(num, lien_court, piste, any_of(evals$nom)) |>
   rename(`N°` = num, Projet = lien_court, Piste = piste) |>
-  kable(caption = "Note totale /20 de chaque évaluateur (— : non noté)")
+  kable(caption = "Note totale /100 de chaque évaluateur (— : non noté)")
 ```
 
 ```{r cleanup}

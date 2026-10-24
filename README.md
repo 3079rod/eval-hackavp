@@ -14,10 +14,11 @@ Le dépôt contient une grille de notation commune et une copie de cette grille 
 | Fichier | Rôle |
 |---|---|
 | `grille_hackavp_notation.csv` | Modèle : les 11 candidats avec les notes vides. **Ne pas noter dedans.** |
-| `adriens_grille_hackavp_notation.csv` | Copie vierge destinée à l'évaluation d'Adrien SALES |
+| `adriens_grille_hackavp_notation.csv` | Grille d'Adrien SALES (jury), sur 100 ; n° 9 et 10 non notés (conflit d'intérêt) |
 | `opus-5_5_grille_hackavp_notation.csv` | Évaluation par Claude Opus 5.5 |
 | `sonnet-5_5_grille_hackavp_notation.csv` | Évaluation par Claude Sonnet 5.5 |
 | `haiku-5_5_grille_hackavp_notation.csv` | Évaluation par Claude Haiku 5.5 |
+| `fable-5_grille_hackavp_notation.csv` | Évaluation par Claude Fable 5 |
 | `detection_ia_articles.csv` | Part de texte généré par IA dans chaque article, selon ZeroGPT (article entier) et Pangram (extrait), mesurée le 23/10/2026 |
 | `methode_detection_ia.md` | Méthode, contrôles et limites de cette mesure |
 | `jury.csv` | Composition du jury : identifiant (préfixe du fichier de grille), nom, type, profil LinkedIn |
@@ -29,28 +30,25 @@ Les fichiers s'appellent `<evaluateur>_grille_hackavp_notation.csv`. Dans `<eval
 ## Format du CSV
 
 - Encodage UTF-8 **avec BOM**, fins de ligne CRLF, séparateur virgule, décimales avec un point (`0.5`).
-- Une ligne d'en-tête, puis une ligne par soumission (11 lignes), 19 colonnes.
+- Une ligne d'en-tête, puis une ligne par soumission (11 lignes), 32 colonnes.
 - `N°` : numéro de la soumission dans le guide du jury (1 à 11).
 
 | Colonne | Contenu |
 |---|---|
 | `N°`, `Projet`, `Auteur`, `Profil auteur`, `Piste`, `Article dev.to`, `Vidéo YouTube` | Identification de la soumission |
-| `Problème et solution : clarté et impact (/4)` | Note |
-| `Solution et pertinence (/4)` | Note |
-| `Interop : schéma d'architecture (/1)` | Note |
-| `Interop : solutions externes (/1)` | Note |
-| `Interop : autres MicroStartups (/2)` | Note |
-| `Usage des données / de l'IA (/3)` | Note |
-| `Structure et slides (/2)` | Note |
-| `Qualité de l'oral (/2)` | Note |
-| `Respect du temps (/1)` | Note |
-| `TOTAL /20` | Somme des notes renseignées |
+| `Socle : …` (9 colonnes, /40) | Créativité et esthétique (/4), UX et utilisabilité (/5), accessibilité (/4), adéquation moyens/résultats (/5), standards et Open Data (/6), storytelling (/4), réutilisabilité et essaimage (/4), plaisir de lecture (/4), plaisir de visionnage (/4) |
+| `Technicité : …` (4 colonnes, /25) | Pertinence des ressources (/8), intégrabilité (/8), maintenabilité (/5), interaction inédite (/4, bonus) |
+| `Valeur RH : …` (5 colonnes, /25) | Qualité du matching, documents générés, restitution, facilité de création, effet sur la décision (/5 chacun) |
+| `Track : …` (4 colonnes, /10) | Chaîne de matching (/4), architecture ou frameworks Open Source (/2), déployabilité ou licences (/2), intégrations ou accessibilité hardware (/2), lus selon la piste |
+| `TOTAL /100` | Somme des notes renseignées |
 | `Commentaires` | Justification de l'évaluateur |
 | `Conflit d'intérêt` | Rempli pour les n° 9 et 10 (soumissions de l'organisateur) |
 
-Une cellule de note **vide** veut dire « non évalué ». Ce n'est pas un zéro. Le `TOTAL /20` ne fait alors la somme que des critères notés, et le commentaire doit le dire.
+Le maximum de chaque critère figure entre parenthèses dans l'en-tête. Une cellule de note **vide** veut dire « non évalué ». Ce n'est pas un zéro. Le `TOTAL /100` ne fait alors la somme que des critères notés, et le commentaire doit le dire.
 
-La grille est celle des MicroStartups du Master MIAGE, sur 20 points. Elle n'est pas la grille sur 100 points publiée dans le guide du jury.
+**Grille sur 100.** Elle remplace la grille MIAGE sur 20 (19 colonnes, `TOTAL /20`), qui reste dans l'historique git. Les critères *plaisir de lecture* et *plaisir de visionnage* sont nouveaux ; les quatre colonnes Track sont communes aux deux pistes et recouvrent les critères propres à chacune. Toutes les grilles, jury comme modèles, se remplissent sur 100 ; une grille restée sur 20 est ignorée par le rapport et par les requêtes ci-dessous.
+
+Les nouvelles évaluations Sonnet, Fable et Opus reposent sur les 11 articles et leurs transcriptions (archivées dans `transcripts/`, sous-titres automatiques YouTube en français). Sonnet n'a pas évalué la créativité/esthétique (totaux sur 96) ; Fable l'a notée d'après les captures publiques des articles, sauf pour les n° 9 et 11 qui n'en contiennent pas (totaux sur 96 pour ces deux-là) ; Opus a noté les 22 critères partout, l'esthétique d'après les images publiques des articles. Le plaisir de visionnage porte uniquement sur le propos transcrit, pas sur les images, le son ou le montage ; chaque commentaire précise ces limites.
 
 ## Pistes
 
@@ -64,7 +62,7 @@ La n° 5 (*Adopte un Job*) est en **SaaS no limit**, comme le déclare son artic
 ## Points connus
 
 - **Conflit d'intérêt** : les n° 9 et 10 sont des soumissions d'Adrien SALES, l'organisateur. Ils restent en compétition : seul l'organisateur ne les note pas (et ne vote pas sur ces deux projets). Tous les autres évaluateurs, modèles compris, les notent normalement.
-- **Vidéos 1 et 6** : les sous-titres de *CV Generator* et *CV FORGE* n'ont pas pu être récupérés avec `yt-dlp`, alors que les vidéos existent. Dans les évaluations des modèles, l'oral et le respect du temps sont donc laissés vides pour ces deux projets, qui sont notés sur 17.
+- **Transcriptions** : les sous-titres automatiques français des 11 vidéos sont archivés dans `transcripts/`. Ceux des vidéos 1 et 6 (*CV Generator*, *CV FORGE*), d'abord introuvables, ont été récupérés après correction de l'identifiant de la vidéo.
 - **Ce que les modèles n'ont pas vu** : ils ont lu les articles (API dev.to) et les transcriptions automatiques des vidéos. Ils n'ont vu ni les images, ni les vidéos elles-mêmes.
 
 ## Requêtes DuckDB
@@ -73,8 +71,9 @@ La n° 5 (*Adopte un Job*) est en **SaaS no limit**, comme le déclare son artic
 
 ```sql
 CREATE VIEW n AS
-SELECT "N°" AS num, Projet, Piste, "TOTAL /20" AS total
-FROM read_csv('opus-5_5_grille_hackavp_notation.csv');
+SELECT "N°" AS num, Projet, Piste, "TOTAL /100" AS total
+FROM read_csv('opus-5_5_grille_hackavp_notation.csv')
+WHERE "TOTAL /100" IS NOT NULL;
 
 -- Gagnant par piste
 SELECT Piste, num, Projet, total FROM n
@@ -94,9 +93,9 @@ FROM n ORDER BY rang;
 ```sql
 CREATE VIEW evals AS
 SELECT regexp_extract(filename, '([^/]+)_grille_hackavp_notation\.csv$', 1) AS evaluateur,
-       "N°" AS num, Projet, Piste, "TOTAL /20" AS total
+       "N°" AS num, Projet, Piste, "TOTAL /100" AS total
 FROM read_csv('*_grille_hackavp_notation.csv', filename = true, union_by_name = true)
-WHERE "TOTAL /20" IS NOT NULL;   -- écarte les copies encore vierges
+WHERE "TOTAL /100" IS NOT NULL;   -- écarte les lignes non notées et les grilles restées sur 20
 
 -- Notes côte à côte, une colonne par évaluateur
 PIVOT (SELECT evaluateur, num, Projet, Piste, total FROM evals)
@@ -106,9 +105,20 @@ ON evaluateur USING first(total) ORDER BY num;
 SELECT num, any_value(Projet) AS Projet, round(avg(total), 2) AS moyenne,
        round(stddev_samp(total), 2) AS ecart_type, count(*) AS n
 FROM evals GROUP BY num ORDER BY moyenne DESC;
+
+-- Classement par rangs (Borda) : insensible à l'échelle de chaque évaluateur
+WITH r AS (
+  SELECT evaluateur, num, Projet, Piste,
+         (count(*) OVER w - rank() OVER (w ORDER BY total DESC)
+            - (count(*) OVER (PARTITION BY evaluateur, total) - 1) / 2.0)
+           / (count(*) OVER w - 1) AS score   -- 1 = premier, 0 = dernier, rang moyen pour les ex æquo
+  FROM evals WINDOW w AS (PARTITION BY evaluateur))
+SELECT rank() OVER (ORDER BY avg(score) DESC) AS rang, num, any_value(Projet) AS Projet,
+       any_value(Piste) AS Piste, round(100 * avg(score), 1) AS score_borda, count(*) AS n
+FROM r GROUP BY num ORDER BY rang;
 ```
 
-Le motif `*_grille_hackavp_notation.csv` ne prend pas le modèle `grille_hackavp_notation.csv`, qui n'a pas de préfixe. Les copies vierges sont écartées par le filtre sur `TOTAL /20`.
+Le motif `*_grille_hackavp_notation.csv` ne prend pas le modèle `grille_hackavp_notation.csv`, qui n'a pas de préfixe. Les lignes non notées (copies vierges, n° 9 et 10 dans la grille de l'organisateur) et les grilles restées sur 20 sont écartées par le filtre sur `TOTAL /100`.
 
 Avec le CLI, lancer `duckdb -no-agent -box < requete.sql`. Si la variable `AI_AGENT` est définie, `-no-agent` est nécessaire pour que les commandes `.print` fonctionnent.
 
@@ -131,4 +141,4 @@ task open     # ouvre le PDF
 task clean    # supprime les fichiers générés
 ```
 
-Il faut Quarto, R (paquets DBI, duckdb, dplyr, tidyr, ggplot2, forcats, stringr, knitr, rmarkdown, scales), xelatex et la police Inter. Le rapport relit à chaque rendu toutes les grilles `*_grille_hackavp_notation.csv` présentes : pour ajouter un membre du jury, il suffit de déposer sa grille et de relancer `task`. Le prix du jury (coup de cœur) s'affiche dès qu'un fichier `prix_du_jury.csv` (colonnes `N°`, `Motivation`) est présent. Le rapport prend le nom et le type de chaque évaluateur dans `jury.csv`, et y affiche la grille comme « Reçue » ou « En attente ». Pour une grille absente de `jury.csv`, les noms de fichiers commençant par un nom de modèle (`opus`, `sonnet`, `haiku`, `gpt`, etc.) sont classés « Modèle IA », les autres « Membre du jury ».
+Il faut Quarto, R (paquets DBI, duckdb, dplyr, tidyr, ggplot2, forcats, stringr, knitr, rmarkdown, scales), xelatex et la police Inter. Le rapport relit à chaque rendu toutes les grilles `*_grille_hackavp_notation.csv` présentes : pour ajouter un membre du jury, il suffit de déposer sa grille et de relancer `task`. Le prix du jury (coup de cœur) se décide par les seuls membres du jury humains : le projet proposé est dans `prix_du_jury.csv` (colonnes `N°`, `Proposé par`, `Motivation`), chaque juré inscrit son vote (`Pour`, `Contre`, `Abstention`) dans `vote_prix_du_jury.csv`, et le prix est attribué à la majorité absolue du jury (4 voix sur 6). Le rapport prend le nom et le type de chaque évaluateur dans `jury.csv`, et y affiche la grille comme « Reçue » ou « En attente ». Pour une grille absente de `jury.csv`, les noms de fichiers commençant par un nom de modèle (`opus`, `sonnet`, `haiku`, `gpt`, etc.) sont classés « Modèle IA », les autres « Membre du jury ».

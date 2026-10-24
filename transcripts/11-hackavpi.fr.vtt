@@ -1,0 +1,1104 @@
+WEBVTT
+Kind: captions
+Language: fr
+
+00:00:01.000 --> 00:00:02.670 align:start position:0%
+ 
+Bonjour<00:00:01.400><c> à</c><00:00:01.480><c> tous</c><00:00:02.000><c> et</c><00:00:02.080><c> merci</c><00:00:02.320><c> de</c><00:00:02.440><c> prendre</c>
+
+00:00:02.670 --> 00:00:02.680 align:start position:0%
+Bonjour à tous et merci de prendre
+ 
+
+00:00:02.680 --> 00:00:04.230 align:start position:0%
+Bonjour à tous et merci de prendre
+quelques<00:00:02.920><c> minutes</c><00:00:03.320><c> pour</c><00:00:03.480><c> découvrir</c><00:00:03.960><c> notre</c>
+
+00:00:04.230 --> 00:00:04.240 align:start position:0%
+quelques minutes pour découvrir notre
+ 
+
+00:00:04.240 --> 00:00:06.550 align:start position:0%
+quelques minutes pour découvrir notre
+projet.<00:00:05.240><c> Nous</c><00:00:05.440><c> allons</c><00:00:05.600><c> vous</c><00:00:05.720><c> présenter</c><00:00:06.160><c> l'API</c>
+
+00:00:06.550 --> 00:00:06.560 align:start position:0%
+projet. Nous allons vous présenter l'API
+ 
+
+00:00:06.560 --> 00:00:08.990 align:start position:0%
+projet. Nous allons vous présenter l'API
+de<00:00:06.720><c> Job</c><00:00:06.960><c> Match</c><00:00:07.320><c> NC,</c><00:00:08.120><c> le</c><00:00:08.280><c> moteur</c><00:00:08.640><c> de</c><00:00:08.720><c> mise</c><00:00:08.920><c> en</c>
+
+00:00:08.990 --> 00:00:09.000 align:start position:0%
+de Job Match NC, le moteur de mise en
+ 
+
+00:00:09.000 --> 00:00:11.190 align:start position:0%
+de Job Match NC, le moteur de mise en
+relation<00:00:09.440><c> entre</c><00:00:09.760><c> CV</c><00:00:10.240><c> et</c><00:00:10.400><c> avis</c><00:00:10.600><c> de</c><00:00:10.720><c> vacances</c><00:00:11.080><c> de</c>
+
+00:00:11.190 --> 00:00:11.200 align:start position:0%
+relation entre CV et avis de vacances de
+ 
+
+00:00:11.200 --> 00:00:12.870 align:start position:0%
+relation entre CV et avis de vacances de
+poste<00:00:11.920><c> que</c><00:00:12.000><c> nous</c><00:00:12.120><c> avons</c><00:00:12.280><c> réalisé</c><00:00:12.600><c> dans</c><00:00:12.720><c> le</c>
+
+00:00:12.870 --> 00:00:12.880 align:start position:0%
+poste que nous avons réalisé dans le
+ 
+
+00:00:12.880 --> 00:00:17.230 align:start position:0%
+poste que nous avons réalisé dans le
+cadre<00:00:13.200><c> du</c><00:00:13.360><c> AKVP</c><00:00:14.280><c> avec</c><00:00:14.520><c> l'OPT</c><00:00:15.080><c> et</c><00:00:15.200><c> l'IAE.</c>
+
+00:00:17.230 --> 00:00:17.240 align:start position:0%
+cadre du AKVP avec l'OPT et l'IAE.
+ 
+
+00:00:17.240 --> 00:00:19.470 align:start position:0%
+cadre du AKVP avec l'OPT et l'IAE.
+Le<00:00:17.440><c> point</c><00:00:17.640><c> de</c><00:00:17.760><c> départ</c><00:00:18.200><c> est</c><00:00:18.280><c> simple.</c><00:00:18.960><c> L'OPT</c>
+
+00:00:19.470 --> 00:00:19.480 align:start position:0%
+Le point de départ est simple. L'OPT
+ 
+
+00:00:19.480 --> 00:00:21.030 align:start position:0%
+Le point de départ est simple. L'OPT
+publie<00:00:19.800><c> régulièrement</c><00:00:20.480><c> des</c><00:00:20.720><c> avis</c><00:00:20.920><c> de</c>
+
+00:00:21.030 --> 00:00:21.040 align:start position:0%
+publie régulièrement des avis de
+ 
+
+00:00:21.040 --> 00:00:23.310 align:start position:0%
+publie régulièrement des avis de
+vacances<00:00:21.400><c> de</c><00:00:21.520><c> poste,</c><00:00:22.040><c> les</c><00:00:22.240><c> AVP.</c>
+
+00:00:23.310 --> 00:00:23.320 align:start position:0%
+vacances de poste, les AVP.
+ 
+
+00:00:23.320 --> 00:00:24.910 align:start position:0%
+vacances de poste, les AVP.
+Côté<00:00:23.560><c> candidat,</c><00:00:24.320><c> il</c><00:00:24.440><c> faut</c><00:00:24.560><c> trouver</c>
+
+00:00:24.910 --> 00:00:24.920 align:start position:0%
+Côté candidat, il faut trouver
+ 
+
+00:00:24.920 --> 00:00:26.470 align:start position:0%
+Côté candidat, il faut trouver
+rapidement<00:00:25.360><c> les</c><00:00:25.560><c> offres</c><00:00:25.760><c> qui</c><00:00:25.920><c> correspondent</c>
+
+00:00:26.470 --> 00:00:26.480 align:start position:0%
+rapidement les offres qui correspondent
+ 
+
+00:00:26.480 --> 00:00:27.830 align:start position:0%
+rapidement les offres qui correspondent
+à<00:00:26.560><c> son</c><00:00:26.720><c> profil.</c>
+
+00:00:27.830 --> 00:00:27.840 align:start position:0%
+à son profil.
+ 
+
+00:00:27.840 --> 00:00:29.950 align:start position:0%
+à son profil.
+Côté<00:00:28.160><c> recruteur,</c><00:00:29.200><c> il</c><00:00:29.360><c> faut</c><00:00:29.480><c> trier</c><00:00:29.800><c> les</c>
+
+00:00:29.950 --> 00:00:29.960 align:start position:0%
+Côté recruteur, il faut trier les
+ 
+
+00:00:29.960 --> 00:00:32.510 align:start position:0%
+Côté recruteur, il faut trier les
+candidats<00:00:30.480><c> efficacement.</c><00:00:31.520><c> Notre</c><00:00:31.800><c> idée,</c>
+
+00:00:32.510 --> 00:00:32.520 align:start position:0%
+candidats efficacement. Notre idée,
+ 
+
+00:00:32.520 --> 00:00:34.870 align:start position:0%
+candidats efficacement. Notre idée,
+rapprocher<00:00:33.080><c> les</c><00:00:33.200><c> deux</c><00:00:33.800><c> avec</c><00:00:34.040><c> une</c><00:00:34.120><c> as-</c>
+
+00:00:34.870 --> 00:00:34.880 align:start position:0%
+rapprocher les deux avec une as-
+ 
+
+00:00:34.880 --> 00:00:36.470 align:start position:0%
+rapprocher les deux avec une as-
+avec<00:00:35.160><c> une</c><00:00:35.240><c> expérience</c><00:00:35.800><c> inspirée</c><00:00:36.320><c> des</c>
+
+00:00:36.470 --> 00:00:36.480 align:start position:0%
+avec une expérience inspirée des
+ 
+
+00:00:36.480 --> 00:00:39.790 align:start position:0%
+avec une expérience inspirée des
+applications<00:00:36.920><c> de</c><00:00:37.040><c> rencontre,</c><00:00:37.640><c> le</c><00:00:37.800><c> swipe.</c>
+
+00:00:39.790 --> 00:00:39.800 align:start position:0%
+applications de rencontre, le swipe.
+ 
+
+00:00:39.800 --> 00:00:41.310 align:start position:0%
+applications de rencontre, le swipe.
+Toute<00:00:39.920><c> la</c><00:00:40.000><c> plateforme</c><00:00:40.480><c> repose</c><00:00:40.800><c> sur</c><00:00:40.920><c> une</c><00:00:41.000><c> API</c>
+
+00:00:41.310 --> 00:00:41.320 align:start position:0%
+Toute la plateforme repose sur une API
+ 
+
+00:00:41.320 --> 00:00:43.670 align:start position:0%
+Toute la plateforme repose sur une API
+REST<00:00:41.840><c> développée</c><00:00:42.280><c> en</c><00:00:42.440><c> Java</c><00:00:42.680><c> 21</c><00:00:43.160><c> avec</c><00:00:43.400><c> Spring</c>
+
+00:00:43.670 --> 00:00:43.680 align:start position:0%
+REST développée en Java 21 avec Spring
+ 
+
+00:00:43.680 --> 00:00:45.550 align:start position:0%
+REST développée en Java 21 avec Spring
+Boot<00:00:43.840><c> Kotlin.</c><00:00:44.720><c> Les</c><00:00:44.800><c> données</c><00:00:45.080><c> sont</c><00:00:45.200><c> stockées</c>
+
+00:00:45.550 --> 00:00:45.560 align:start position:0%
+Boot Kotlin. Les données sont stockées
+ 
+
+00:00:45.560 --> 00:00:48.310 align:start position:0%
+Boot Kotlin. Les données sont stockées
+dans<00:00:45.680><c> PostgreSQL</c><00:00:47.120><c> et</c><00:00:47.200><c> le</c><00:00:47.320><c> schéma</c><00:00:47.760><c> évolue</c><00:00:48.120><c> par</c>
+
+00:00:48.310 --> 00:00:48.320 align:start position:0%
+dans PostgreSQL et le schéma évolue par
+ 
+
+00:00:48.320 --> 00:00:50.790 align:start position:0%
+dans PostgreSQL et le schéma évolue par
+migration<00:00:48.880><c> versionnée</c><00:00:49.440><c> avec</c><00:00:49.680><c> Flyway.</c>
+
+00:00:50.790 --> 00:00:50.800 align:start position:0%
+migration versionnée avec Flyway.
+ 
+
+00:00:50.800 --> 00:00:52.950 align:start position:0%
+migration versionnée avec Flyway.
+17<00:00:51.160><c> migrations</c><00:00:51.720><c> à</c><00:00:51.840><c> ce</c><00:00:52.000><c> jour.</c>
+
+00:00:52.950 --> 00:00:52.960 align:start position:0%
+17 migrations à ce jour.
+ 
+
+00:00:52.960 --> 00:00:54.830 align:start position:0%
+17 migrations à ce jour.
+L'authentification<00:00:53.880><c> utilise</c><00:00:54.240><c> des</c><00:00:54.400><c> jetons</c>
+
+00:00:54.830 --> 00:00:54.840 align:start position:0%
+L'authentification utilise des jetons
+ 
+
+00:00:54.840 --> 00:00:58.030 align:start position:0%
+L'authentification utilise des jetons
+JWT<00:00:56.120><c> et</c><00:00:56.200><c> l'ensemble</c><00:00:56.760><c> est</c><00:00:56.920><c> conteneu-</c>
+
+00:00:58.030 --> 00:00:58.040 align:start position:0%
+JWT et l'ensemble est conteneu-
+ 
+
+00:00:58.040 --> 00:00:59.990 align:start position:0%
+JWT et l'ensemble est conteneu-
+et<00:00:58.120><c> l'ensemble</c><00:00:58.640><c> est</c><00:00:58.760><c> conteneurisé</c><00:00:59.760><c> avec</c>
+
+00:00:59.990 --> 00:01:00.000 align:start position:0%
+et l'ensemble est conteneurisé avec
+ 
+
+00:01:00.000 --> 00:01:01.950 align:start position:0%
+et l'ensemble est conteneurisé avec
+Docker.
+
+00:01:01.950 --> 00:01:01.960 align:start position:0%
+Docker.
+ 
+
+00:01:01.960 --> 00:01:04.270 align:start position:0%
+Docker.
+Voici<00:01:02.320><c> l'architecture.</c><00:01:03.600><c> Les</c><00:01:03.760><c> applications</c>
+
+00:01:04.270 --> 00:01:04.280 align:start position:0%
+Voici l'architecture. Les applications
+ 
+
+00:01:04.280 --> 00:01:07.030 align:start position:0%
+Voici l'architecture. Les applications
+clientes<00:01:04.839><c> appellent</c><00:01:05.199><c> l'API</c><00:01:05.680><c> en</c><00:01:05.840><c> HTTPS</c><00:01:06.800><c> via</c><00:01:06.920><c> le</c>
+
+00:01:07.030 --> 00:01:07.040 align:start position:0%
+clientes appellent l'API en HTTPS via le
+ 
+
+00:01:07.040 --> 00:01:09.030 align:start position:0%
+clientes appellent l'API en HTTPS via le
+reverse<00:01:07.360><c> proxy</c><00:01:07.840><c> Caddy</c>
+
+00:01:09.030 --> 00:01:09.040 align:start position:0%
+reverse proxy Caddy
+ 
+
+00:01:09.040 --> 00:01:11.070 align:start position:0%
+reverse proxy Caddy
+qui<00:01:09.160><c> gère</c><00:01:09.360><c> actuellement</c>
+
+00:01:11.070 --> 00:01:11.080 align:start position:0%
+qui gère actuellement
+ 
+
+00:01:11.080 --> 00:01:12.230 align:start position:0%
+qui gère actuellement
+qui<00:01:11.200><c> gère</c><00:01:11.440><c> automatiquement</c><00:01:12.120><c> les</c>
+
+00:01:12.230 --> 00:01:12.240 align:start position:0%
+qui gère automatiquement les
+ 
+
+00:01:12.240 --> 00:01:13.670 align:start position:0%
+qui gère automatiquement les
+certificats.
+
+00:01:13.670 --> 00:01:13.680 align:start position:0%
+certificats.
+ 
+
+00:01:13.680 --> 00:01:16.590 align:start position:0%
+certificats.
+L'API<00:01:14.160><c> dialogue</c><00:01:14.560><c> avec</c><00:01:14.800><c> la</c><00:01:14.880><c> base</c><00:01:15.200><c> PostgreSQL,</c>
+
+00:01:16.590 --> 00:01:16.600 align:start position:0%
+L'API dialogue avec la base PostgreSQL,
+ 
+
+00:01:16.600 --> 00:01:17.950 align:start position:0%
+L'API dialogue avec la base PostgreSQL,
+importe<00:01:16.960><c> les</c><00:01:17.120><c> offres</c><00:01:17.320><c> depuis</c><00:01:17.560><c> l'API</c>
+
+00:01:17.950 --> 00:01:17.960 align:start position:0%
+importe les offres depuis l'API
+ 
+
+00:01:17.960 --> 00:01:20.110 align:start position:0%
+importe les offres depuis l'API
+officielle<00:01:18.440><c> de</c><00:01:18.520><c> l'OPT,</c><00:01:19.480><c> déclenche</c><00:01:20.000><c> des</c>
+
+00:01:20.110 --> 00:01:20.120 align:start position:0%
+officielle de l'OPT, déclenche des
+ 
+
+00:01:20.120 --> 00:01:22.830 align:start position:0%
+officielle de l'OPT, déclenche des
+traitements<00:01:20.560><c> automatisés</c><00:01:21.520><c> pour</c><00:01:21.720><c> N8N</c><00:01:22.680><c> pour</c>
+
+00:01:22.830 --> 00:01:22.840 align:start position:0%
+traitements automatisés pour N8N pour
+ 
+
+00:01:22.840 --> 00:01:25.350 align:start position:0%
+traitements automatisés pour N8N pour
+analyser<00:01:23.320><c> les</c><00:01:23.480><c> CV</c><00:01:24.520><c> et</c><00:01:24.640><c> envoie</c><00:01:24.880><c> des</c><00:01:25.080><c> emails</c>
+
+00:01:25.350 --> 00:01:25.360 align:start position:0%
+analyser les CV et envoie des emails
+ 
+
+00:01:25.360 --> 00:01:27.030 align:start position:0%
+analyser les CV et envoie des emails
+pour<00:01:25.520><c> la</c><00:01:25.640><c> réinitialisation</c><00:01:26.720><c> des</c><00:01:26.840><c> mots</c><00:01:26.960><c> de</c>
+
+00:01:27.030 --> 00:01:27.040 align:start position:0%
+pour la réinitialisation des mots de
+ 
+
+00:01:27.040 --> 00:01:28.830 align:start position:0%
+pour la réinitialisation des mots de
+passe.
+
+00:01:28.830 --> 00:01:28.840 align:start position:0%
+passe.
+ 
+
+00:01:28.840 --> 00:01:31.230 align:start position:0%
+passe.
+La<00:01:29.000><c> sécurité</c><00:01:29.560><c> a</c><00:01:29.640><c> été</c><00:01:29.840><c> pensée</c><00:01:30.200><c> dès</c><00:01:30.360><c> le</c><00:01:30.440><c> départ.</c>
+
+00:01:31.230 --> 00:01:31.240 align:start position:0%
+La sécurité a été pensée dès le départ.
+ 
+
+00:01:31.240 --> 00:01:33.870 align:start position:0%
+La sécurité a été pensée dès le départ.
+Il<00:01:31.360><c> existe</c><00:01:31.680><c> trois</c><00:01:31.960><c> :</c><00:01:32.840><c> administrateur,</c>
+
+00:01:33.870 --> 00:01:33.880 align:start position:0%
+Il existe trois : administrateur,
+ 
+
+00:01:33.880 --> 00:01:36.150 align:start position:0%
+Il existe trois : administrateur,
+recruteur<00:01:34.800><c> et</c><00:01:34.920><c> candidat.</c>
+
+00:01:36.150 --> 00:01:36.160 align:start position:0%
+recruteur et candidat.
+ 
+
+00:01:36.160 --> 00:01:38.950 align:start position:0%
+recruteur et candidat.
+Le<00:01:36.320><c> rôle</c><00:01:36.480><c> est</c><00:01:36.560><c> porté</c><00:01:36.880><c> par</c><00:01:37.040><c> le</c><00:01:37.160><c> jeton</c><00:01:37.520><c> JWT</c><00:01:38.840><c> et</c>
+
+00:01:38.950 --> 00:01:38.960 align:start position:0%
+Le rôle est porté par le jeton JWT et
+ 
+
+00:01:38.960 --> 00:01:40.670 align:start position:0%
+Le rôle est porté par le jeton JWT et
+chaque<00:01:39.240><c> route</c><00:01:39.440><c> déclare</c><00:01:39.800><c> précisément</c><00:01:40.440><c> qui</c>
+
+00:01:40.670 --> 00:01:40.680 align:start position:0%
+chaque route déclare précisément qui
+ 
+
+00:01:40.680 --> 00:01:42.150 align:start position:0%
+chaque route déclare précisément qui
+peut<00:01:40.880><c> y</c><00:01:41.000><c> accéder.</c>
+
+00:01:42.150 --> 00:01:42.160 align:start position:0%
+peut y accéder.
+ 
+
+00:01:42.160 --> 00:01:44.030 align:start position:0%
+peut y accéder.
+Les<00:01:42.280><c> mots</c><00:01:42.400><c> de</c><00:01:42.440><c> passe</c><00:01:42.680><c> sont</c><00:01:42.880><c> hachés</c><00:01:43.280><c> avec</c>
+
+00:01:44.030 --> 00:01:44.040 align:start position:0%
+Les mots de passe sont hachés avec
+ 
+
+00:01:44.040 --> 00:01:47.350 align:start position:0%
+Les mots de passe sont hachés avec
+310000<00:01:44.760><c> itérations,</c><00:01:45.600><c> un</c><00:01:45.720><c> sel</c><00:01:46.160><c> et</c><00:01:46.320><c> un</c><00:01:46.400><c> poivre.</c>
+
+00:01:47.350 --> 00:01:47.360 align:start position:0%
+310000 itérations, un sel et un poivre.
+ 
+
+00:01:47.360 --> 00:01:49.270 align:start position:0%
+310000 itérations, un sel et un poivre.
+Le<00:01:47.480><c> service</c><00:01:47.880><c> N8N</c><00:01:48.360><c> s'authentifie</c><00:01:48.960><c> avec</c><00:01:49.160><c> sa</c>
+
+00:01:49.270 --> 00:01:49.280 align:start position:0%
+Le service N8N s'authentifie avec sa
+ 
+
+00:01:49.280 --> 00:01:51.550 align:start position:0%
+Le service N8N s'authentifie avec sa
+propre<00:01:49.680><c> clé</c><00:01:49.880><c> d'API</c><00:01:50.880><c> et</c><00:01:51.000><c> les</c><00:01:51.120><c> jetons</c><00:01:51.400><c> de</c>
+
+00:01:51.550 --> 00:01:51.560 align:start position:0%
+propre clé d'API et les jetons de
+ 
+
+00:01:51.560 --> 00:01:53.630 align:start position:0%
+propre clé d'API et les jetons de
+réinitialisation<00:01:52.680><c> ne</c><00:01:52.840><c> sont</c><00:01:53.040><c> jamais</c><00:01:53.320><c> stockés</c>
+
+00:01:53.630 --> 00:01:53.640 align:start position:0%
+réinitialisation ne sont jamais stockés
+ 
+
+00:01:53.640 --> 00:01:55.630 align:start position:0%
+réinitialisation ne sont jamais stockés
+en<00:01:53.760><c> clair.</c>
+
+00:01:55.630 --> 00:01:55.640 align:start position:0%
+en clair.
+ 
+
+00:01:55.640 --> 00:01:57.150 align:start position:0%
+en clair.
+Les<00:01:55.920><c> offres</c><00:01:56.160><c> proviennent</c><00:01:56.560><c> directement</c><00:01:57.080><c> de</c>
+
+00:01:57.150 --> 00:01:57.160 align:start position:0%
+Les offres proviennent directement de
+ 
+
+00:01:57.160 --> 00:01:58.350 align:start position:0%
+Les offres proviennent directement de
+l'OPT.
+
+00:01:58.350 --> 00:01:58.360 align:start position:0%
+l'OPT.
+ 
+
+00:01:58.360 --> 00:02:00.430 align:start position:0%
+l'OPT.
+Un<00:01:58.480><c> administrateur</c><00:01:59.160><c> déclenche</c><00:01:59.560><c> l'import,</c>
+
+00:02:00.430 --> 00:02:00.440 align:start position:0%
+Un administrateur déclenche l'import,
+ 
+
+00:02:00.440 --> 00:02:02.830 align:start position:0%
+Un administrateur déclenche l'import,
+l'API<00:02:00.800><c> interroge</c><00:02:01.240><c> le</c><00:02:01.320><c> service</c><00:02:01.640><c> de</c><00:02:01.720><c> l'OPT</c><00:02:02.760><c> et</c>
+
+00:02:02.830 --> 00:02:02.840 align:start position:0%
+l'API interroge le service de l'OPT et
+ 
+
+00:02:02.840 --> 00:02:05.190 align:start position:0%
+l'API interroge le service de l'OPT et
+ne<00:02:02.960><c> crée</c><00:02:03.200><c> que</c><00:02:03.360><c> les</c><00:02:03.479><c> références</c><00:02:04.040><c> inconnues</c>
+
+00:02:05.190 --> 00:02:05.200 align:start position:0%
+ne crée que les références inconnues
+ 
+
+00:02:05.200 --> 00:02:07.270 align:start position:0%
+ne crée que les références inconnues
+sans<00:02:05.400><c> jamais</c><00:02:05.640><c> dupliquer</c><00:02:06.040><c> une</c><00:02:06.160><c> offre.</c>
+
+00:02:07.270 --> 00:02:07.280 align:start position:0%
+sans jamais dupliquer une offre.
+ 
+
+00:02:07.280 --> 00:02:08.870 align:start position:0%
+sans jamais dupliquer une offre.
+Chaque<00:02:07.520><c> AVP</c><00:02:07.920><c> est</c><00:02:08.000><c> stocké</c><00:02:08.320><c> dans</c><00:02:08.440><c> un</c><00:02:08.520><c> modèle</c>
+
+00:02:08.870 --> 00:02:08.880 align:start position:0%
+Chaque AVP est stocké dans un modèle
+ 
+
+00:02:08.880 --> 00:02:11.270 align:start position:0%
+Chaque AVP est stocké dans un modèle
+relationnel,<00:02:10.039><c> une</c><00:02:10.200><c> table</c><00:02:10.399><c> principale</c><00:02:11.080><c> et</c><00:02:11.160><c> une</c>
+
+00:02:11.270 --> 00:02:11.280 align:start position:0%
+relationnel, une table principale et une
+ 
+
+00:02:11.280 --> 00:02:13.350 align:start position:0%
+relationnel, une table principale et une
+table<00:02:11.560><c> par</c><00:02:11.720><c> liste,</c><00:02:12.600><c> famille</c><00:02:12.760><c> de</c><00:02:12.840><c> métier,</c>
+
+00:02:13.350 --> 00:02:13.360 align:start position:0%
+table par liste, famille de métier,
+ 
+
+00:02:13.360 --> 00:02:14.710 align:start position:0%
+table par liste, famille de métier,
+connaissances,<00:02:14.040><c> savoir-faire,</c>
+
+00:02:14.710 --> 00:02:14.720 align:start position:0%
+connaissances, savoir-faire,
+ 
+
+00:02:14.720 --> 00:02:16.470 align:start position:0%
+connaissances, savoir-faire,
+responsabilités.
+
+00:02:16.470 --> 00:02:16.480 align:start position:0%
+responsabilités.
+ 
+
+00:02:16.480 --> 00:02:17.790 align:start position:0%
+responsabilités.
+Les<00:02:16.640><c> offres</c><00:02:16.880><c> sont</c><00:02:17.040><c> ensuite</c><00:02:17.280><c> consultables</c>
+
+00:02:17.790 --> 00:02:17.800 align:start position:0%
+Les offres sont ensuite consultables
+ 
+
+00:02:17.800 --> 00:02:20.949 align:start position:0%
+Les offres sont ensuite consultables
+publiquement<00:02:18.400><c> avec</c><00:02:18.680><c> pagination.</c>
+
+00:02:20.949 --> 00:02:20.959 align:start position:0%
+publiquement avec pagination.
+ 
+
+00:02:20.959 --> 00:02:22.670 align:start position:0%
+publiquement avec pagination.
+Côté<00:02:21.200><c> candidat,</c><00:02:22.000><c> l'inscription</c><00:02:22.480><c> crée</c>
+
+00:02:22.670 --> 00:02:22.680 align:start position:0%
+Côté candidat, l'inscription crée
+ 
+
+00:02:22.680 --> 00:02:24.990 align:start position:0%
+Côté candidat, l'inscription crée
+automatiquement<00:02:23.400><c> un</c><00:02:23.520><c> profil.</c><00:02:24.520><c> Le</c><00:02:24.640><c> candidat</c>
+
+00:02:24.990 --> 00:02:25.000 align:start position:0%
+automatiquement un profil. Le candidat
+ 
+
+00:02:25.000 --> 00:02:27.550 align:start position:0%
+automatiquement un profil. Le candidat
+peut<00:02:25.120><c> saisir</c><00:02:25.560><c> son</c><00:02:25.720><c> CV</c><00:02:26.080><c> au</c><00:02:26.160><c> format</c><00:02:26.480><c> JSON</c><00:02:27.440><c> ou</c>
+
+00:02:27.550 --> 00:02:27.560 align:start position:0%
+peut saisir son CV au format JSON ou
+ 
+
+00:02:27.560 --> 00:02:30.230 align:start position:0%
+peut saisir son CV au format JSON ou
+envoyer<00:02:27.920><c> un</c><00:02:28.000><c> fichier</c><00:02:28.280><c> PDF</c><00:02:28.840><c> ou</c><00:02:28.959><c> une</c><00:02:29.120><c> image.</c>
+
+00:02:30.230 --> 00:02:30.240 align:start position:0%
+envoyer un fichier PDF ou une image.
+ 
+
+00:02:30.240 --> 00:02:32.190 align:start position:0%
+envoyer un fichier PDF ou une image.
+Ce<00:02:30.360><c> fichier</c><00:02:30.760><c> est</c><00:02:30.840><c> nettoyé,</c><00:02:31.760><c> scripts,</c>
+
+00:02:32.190 --> 00:02:32.200 align:start position:0%
+Ce fichier est nettoyé, scripts,
+ 
+
+00:02:32.200 --> 00:02:33.430 align:start position:0%
+Ce fichier est nettoyé, scripts,
+formulaires<00:02:32.840><c> et</c><00:02:32.920><c> pièces</c><00:02:33.120><c> jointes</c><00:02:33.320><c> sont</c>
+
+00:02:33.430 --> 00:02:33.440 align:start position:0%
+formulaires et pièces jointes sont
+ 
+
+00:02:33.440 --> 00:02:34.430 align:start position:0%
+formulaires et pièces jointes sont
+retirés.
+
+00:02:34.430 --> 00:02:34.440 align:start position:0%
+retirés.
+ 
+
+00:02:34.440 --> 00:02:36.550 align:start position:0%
+retirés.
+Puis,<00:02:34.680><c> il</c><00:02:34.840><c> est</c><00:02:34.880><c> recompressé.</c>
+
+00:02:36.550 --> 00:02:36.560 align:start position:0%
+Puis, il est recompressé.
+ 
+
+00:02:36.560 --> 00:02:39.150 align:start position:0%
+Puis, il est recompressé.
+Ensuite,<00:02:37.160><c> l'API</c><00:02:37.520><c> déclenche</c><00:02:37.920><c> un</c><00:02:38.000><c> workflow</c><00:02:38.440><c> N8N</c>
+
+00:02:39.150 --> 00:02:39.160 align:start position:0%
+Ensuite, l'API déclenche un workflow N8N
+ 
+
+00:02:39.160 --> 00:02:41.070 align:start position:0%
+Ensuite, l'API déclenche un workflow N8N
+qui<00:02:39.320><c> analyse</c><00:02:39.720><c> le</c><00:02:39.840><c> document</c><00:02:40.320><c> et</c><00:02:40.400><c> renvoie</c><00:02:40.760><c> un</c><00:02:40.840><c> CV</c>
+
+00:02:41.070 --> 00:02:41.080 align:start position:0%
+qui analyse le document et renvoie un CV
+ 
+
+00:02:41.080 --> 00:02:42.390 align:start position:0%
+qui analyse le document et renvoie un CV
+structuré
+
+00:02:42.390 --> 00:02:42.400 align:start position:0%
+structuré
+ 
+
+00:02:42.400 --> 00:02:45.630 align:start position:0%
+structuré
+stocké<00:02:42.720><c> séparément</c><00:02:43.200><c> du</c><00:02:43.360><c> CV</c><00:02:43.680><c> saisi.</c>
+
+00:02:45.630 --> 00:02:45.640 align:start position:0%
+stocké séparément du CV saisi.
+ 
+
+00:02:45.640 --> 00:02:47.790 align:start position:0%
+stocké séparément du CV saisi.
+Le<00:02:45.800><c> cœur</c><00:02:46.000><c> du</c><00:02:46.120><c> projet,</c><00:02:46.560><c> c'est</c><00:02:46.720><c> le</c><00:02:46.840><c> swipe.</c><00:02:47.720><c> Le</c>
+
+00:02:47.790 --> 00:02:47.800 align:start position:0%
+Le cœur du projet, c'est le swipe. Le
+ 
+
+00:02:47.800 --> 00:02:49.470 align:start position:0%
+Le cœur du projet, c'est le swipe. Le
+candidat<00:02:48.200><c> swipe</c><00:02:48.480><c> une</c><00:02:48.600><c> offre,</c><00:02:49.040><c> un</c><00:02:49.160><c> like</c><00:02:49.400><c> est</c>
+
+00:02:49.470 --> 00:02:49.480 align:start position:0%
+candidat swipe une offre, un like est
+ 
+
+00:02:49.480 --> 00:02:51.710 align:start position:0%
+candidat swipe une offre, un like est
+créé<00:02:49.800><c> une</c><00:02:49.959><c> candidature</c><00:02:50.600><c> en</c><00:02:50.760><c> attente,</c><00:02:51.600><c> un</c>
+
+00:02:51.710 --> 00:02:51.720 align:start position:0%
+créé une candidature en attente, un
+ 
+
+00:02:51.720 --> 00:02:53.430 align:start position:0%
+créé une candidature en attente, un
+dislike<00:02:52.240><c> l'annule.</c>
+
+00:02:53.430 --> 00:02:53.440 align:start position:0%
+dislike l'annule.
+ 
+
+00:02:53.440 --> 00:02:54.750 align:start position:0%
+dislike l'annule.
+Il<00:02:53.560><c> peut</c><00:02:53.680><c> changer</c><00:02:53.920><c> d'avis</c><00:02:54.320><c> tant</c><00:02:54.480><c> qu'aucun</c>
+
+00:02:54.750 --> 00:02:54.760 align:start position:0%
+Il peut changer d'avis tant qu'aucun
+ 
+
+00:02:54.760 --> 00:02:56.470 align:start position:0%
+Il peut changer d'avis tant qu'aucun
+recruteur<00:02:55.040><c> ne</c><00:02:55.280><c> s'est</c><00:02:55.360><c> prononcé</c>
+
+00:02:56.470 --> 00:02:56.480 align:start position:0%
+recruteur ne s'est prononcé
+ 
+
+00:02:56.480 --> 00:02:59.110 align:start position:0%
+recruteur ne s'est prononcé
+Le<00:02:56.600><c> recruteur,</c><00:02:57.120><c> lui,</c><00:02:57.760><c> swipe</c><00:02:58.080><c> la</c><00:02:58.200><c> candidature,</c>
+
+00:02:59.110 --> 00:02:59.120 align:start position:0%
+Le recruteur, lui, swipe la candidature,
+ 
+
+00:02:59.120 --> 00:03:01.229 align:start position:0%
+Le recruteur, lui, swipe la candidature,
+sa<00:02:59.200><c> décision</c><00:02:59.680><c> est</c><00:02:59.760><c> définitive</c>
+
+00:03:01.229 --> 00:03:01.239 align:start position:0%
+sa décision est définitive
+ 
+
+00:03:01.239 --> 00:03:03.270 align:start position:0%
+sa décision est définitive
+et<00:03:01.360><c> unique</c><00:03:01.720><c> pour</c><00:03:01.880><c> toute</c><00:03:02.040><c> l'équipe.</c><00:03:02.880><c> Un</c><00:03:03.000><c> like</c>
+
+00:03:03.270 --> 00:03:03.280 align:start position:0%
+et unique pour toute l'équipe. Un like
+ 
+
+00:03:03.280 --> 00:03:05.949 align:start position:0%
+et unique pour toute l'équipe. Un like
+la<00:03:03.400><c> valide,</c><00:03:04.080><c> un</c><00:03:04.200><c> dislike</c><00:03:04.640><c> la</c><00:03:04.760><c> rejette.</c>
+
+00:03:05.949 --> 00:03:05.959 align:start position:0%
+la valide, un dislike la rejette.
+ 
+
+00:03:05.959 --> 00:03:07.910 align:start position:0%
+la valide, un dislike la rejette.
+Enfin,<00:03:06.600><c> le</c><00:03:06.760><c> recruteur</c><00:03:07.239><c> peut</c><00:03:07.360><c> signaler</c><00:03:07.800><c> qu'un</c>
+
+00:03:07.910 --> 00:03:07.920 align:start position:0%
+Enfin, le recruteur peut signaler qu'un
+ 
+
+00:03:07.920 --> 00:03:10.830 align:start position:0%
+Enfin, le recruteur peut signaler qu'un
+entretien<00:03:08.600><c> est</c><00:03:08.720><c> à</c><00:03:08.800><c> programmer.</c>
+
+00:03:10.830 --> 00:03:10.840 align:start position:0%
+entretien est à programmer.
+ 
+
+00:03:10.840 --> 00:03:12.430 align:start position:0%
+entretien est à programmer.
+Chaque<00:03:11.040><c> action</c><00:03:11.400><c> est</c><00:03:11.519><c> tracée,</c><00:03:12.200><c> deux</c>
+
+00:03:12.430 --> 00:03:12.440 align:start position:0%
+Chaque action est tracée, deux
+ 
+
+00:03:12.440 --> 00:03:13.630 align:start position:0%
+Chaque action est tracée, deux
+historiques<00:03:12.920><c> sont</c><00:03:13.120><c> alimentés</c>
+
+00:03:13.630 --> 00:03:13.640 align:start position:0%
+historiques sont alimentés
+ 
+
+00:03:13.640 --> 00:03:16.110 align:start position:0%
+historiques sont alimentés
+automatiquement,<00:03:14.920><c> celui</c><00:03:15.200><c> des</c><00:03:15.360><c> swipes,</c>
+
+00:03:16.110 --> 00:03:16.120 align:start position:0%
+automatiquement, celui des swipes,
+ 
+
+00:03:16.120 --> 00:03:18.070 align:start position:0%
+automatiquement, celui des swipes,
+candidats<00:03:16.600><c> comme</c><00:03:16.840><c> recruteurs,</c>
+
+00:03:18.070 --> 00:03:18.080 align:start position:0%
+candidats comme recruteurs,
+ 
+
+00:03:18.080 --> 00:03:20.110 align:start position:0%
+candidats comme recruteurs,
+avec<00:03:18.320><c> chaque</c><00:03:18.560><c> changement</c><00:03:18.920><c> d'avis,</c>
+
+00:03:20.110 --> 00:03:20.120 align:start position:0%
+avec chaque changement d'avis,
+ 
+
+00:03:20.120 --> 00:03:22.390 align:start position:0%
+avec chaque changement d'avis,
+et<00:03:20.239><c> celui</c><00:03:20.480><c> des</c><00:03:20.600><c> statuts</c><00:03:20.880><c> de</c><00:03:21.000><c> candidature</c>
+
+00:03:22.390 --> 00:03:22.400 align:start position:0%
+et celui des statuts de candidature
+ 
+
+00:03:22.400 --> 00:03:24.270 align:start position:0%
+et celui des statuts de candidature
+qui<00:03:22.519><c> relie</c><00:03:22.840><c> chaque</c><00:03:23.120><c> changement</c><00:03:23.600><c> au</c><00:03:23.720><c> swipe</c><00:03:24.120><c> qui</c>
+
+00:03:24.270 --> 00:03:24.280 align:start position:0%
+qui relie chaque changement au swipe qui
+ 
+
+00:03:24.280 --> 00:03:26.110 align:start position:0%
+qui relie chaque changement au swipe qui
+l'a<00:03:24.440><c> provoqué.</c><00:03:25.400><c> Ces</c><00:03:25.560><c> historiques</c><00:03:26.000><c> sont</c>
+
+00:03:26.110 --> 00:03:26.120 align:start position:0%
+l'a provoqué. Ces historiques sont
+ 
+
+00:03:26.120 --> 00:03:28.190 align:start position:0%
+l'a provoqué. Ces historiques sont
+réservés<00:03:26.519><c> aux</c><00:03:26.680><c> administrateurs,</c><00:03:27.560><c> filtrables</c>
+
+00:03:28.190 --> 00:03:28.200 align:start position:0%
+réservés aux administrateurs, filtrables
+ 
+
+00:03:28.200 --> 00:03:30.310 align:start position:0%
+réservés aux administrateurs, filtrables
+et<00:03:28.280><c> paginés.</c>
+
+00:03:30.310 --> 00:03:30.320 align:start position:0%
+et paginés.
+ 
+
+00:03:30.320 --> 00:03:32.390 align:start position:0%
+et paginés.
+Pour<00:03:30.440><c> le</c><00:03:30.560><c> pilotage,</c><00:03:31.360><c> l'API</c><00:03:31.800><c> expose</c><00:03:32.280><c> des</c>
+
+00:03:32.390 --> 00:03:32.400 align:start position:0%
+Pour le pilotage, l'API expose des
+ 
+
+00:03:32.400 --> 00:03:34.590 align:start position:0%
+Pour le pilotage, l'API expose des
+indicateurs<00:03:32.959><c> prêts</c><00:03:33.200><c> à</c><00:03:33.239><c> l'emploi,</c><00:03:34.239><c> le</c><00:03:34.320><c> nombre</c>
+
+00:03:34.590 --> 00:03:34.600 align:start position:0%
+indicateurs prêts à l'emploi, le nombre
+ 
+
+00:03:34.600 --> 00:03:36.590 align:start position:0%
+indicateurs prêts à l'emploi, le nombre
+d'offres<00:03:34.840><c> actives</c><00:03:35.320><c> et</c><00:03:35.440><c> expirées,</c><00:03:36.480><c> la</c>
+
+00:03:36.590 --> 00:03:36.600 align:start position:0%
+d'offres actives et expirées, la
+ 
+
+00:03:36.600 --> 00:03:38.430 align:start position:0%
+d'offres actives et expirées, la
+répartition<00:03:37.120><c> des</c><00:03:37.239><c> candidatures</c><00:03:37.800><c> par</c><00:03:37.959><c> statut</c>
+
+00:03:38.430 --> 00:03:38.440 align:start position:0%
+répartition des candidatures par statut
+ 
+
+00:03:38.440 --> 00:03:40.630 align:start position:0%
+répartition des candidatures par statut
+avec<00:03:38.680><c> leur</c><00:03:38.840><c> taux,</c><00:03:39.720><c> le</c><00:03:39.840><c> taux</c><00:03:40.000><c> de</c><00:03:40.120><c> validation</c>
+
+00:03:40.630 --> 00:03:40.640 align:start position:0%
+avec leur taux, le taux de validation
+ 
+
+00:03:40.640 --> 00:03:42.390 align:start position:0%
+avec leur taux, le taux de validation
+par<00:03:40.800><c> le</c><00:03:40.880><c> recruteur</c><00:03:41.800><c> et</c><00:03:41.880><c> la</c><00:03:42.040><c> part</c><00:03:42.280><c> des</c>
+
+00:03:42.390 --> 00:03:42.400 align:start position:0%
+par le recruteur et la part des
+ 
+
+00:03:42.400 --> 00:03:43.910 align:start position:0%
+par le recruteur et la part des
+candidats<00:03:42.800><c> déposés</c><00:03:43.280><c> par</c><00:03:43.440><c> des</c><00:03:43.640><c> agents</c><00:03:43.840><c> de</c>
+
+00:03:43.910 --> 00:03:43.920 align:start position:0%
+candidats déposés par des agents de
+ 
+
+00:03:43.920 --> 00:03:45.229 align:start position:0%
+candidats déposés par des agents de
+l'OPT
+
+00:03:45.229 --> 00:03:45.239 align:start position:0%
+l'OPT
+ 
+
+00:03:45.239 --> 00:03:48.190 align:start position:0%
+l'OPT
+pour<00:03:45.320><c> suivre</c><00:03:45.519><c> la</c><00:03:45.600><c> mobilité</c><00:03:46.120><c> interne.</c>
+
+00:03:48.190 --> 00:03:48.200 align:start position:0%
+pour suivre la mobilité interne.
+ 
+
+00:03:48.200 --> 00:03:50.110 align:start position:0%
+pour suivre la mobilité interne.
+Pour<00:03:48.280><c> la</c><00:03:48.400><c> démonstration,</c><00:03:49.280><c> nous</c><00:03:49.480><c> avons</c><00:03:49.640><c> généré</c>
+
+00:03:50.110 --> 00:03:50.120 align:start position:0%
+Pour la démonstration, nous avons généré
+ 
+
+00:03:50.120 --> 00:03:52.110 align:start position:0%
+Pour la démonstration, nous avons généré
+un<00:03:50.239><c> jeu</c><00:03:50.400><c> de</c><00:03:50.519><c> données</c><00:03:50.880><c> cohérent,</c>
+
+00:03:52.110 --> 00:03:52.120 align:start position:0%
+un jeu de données cohérent,
+ 
+
+00:03:52.120 --> 00:03:54.990 align:start position:0%
+un jeu de données cohérent,
+45<00:03:52.600><c> candidats</c><00:03:53.200><c> et</c><00:03:53.320><c> six</c><00:03:53.520><c> recruteurs</c><00:03:53.960><c> fictifs</c>
+
+00:03:54.990 --> 00:03:55.000 align:start position:0%
+45 candidats et six recruteurs fictifs
+ 
+
+00:03:55.000 --> 00:03:57.150 align:start position:0%
+45 candidats et six recruteurs fictifs
+sur<00:03:55.160><c> six</c><00:03:55.440><c> semaines</c><00:03:55.640><c> d'activité.</c><00:03:56.760><c> Les</c><00:03:56.840><c> swipes</c>
+
+00:03:57.150 --> 00:03:57.160 align:start position:0%
+sur six semaines d'activité. Les swipes
+ 
+
+00:03:57.160 --> 00:03:58.590 align:start position:0%
+sur six semaines d'activité. Les swipes
+sont<00:03:57.320><c> rejoués</c><00:03:57.600><c> dans</c><00:03:57.680><c> l'ordre</c><00:03:57.880><c> chronologique</c>
+
+00:03:58.590 --> 00:03:58.600 align:start position:0%
+sont rejoués dans l'ordre chronologique
+ 
+
+00:03:58.600 --> 00:04:00.070 align:start position:0%
+sont rejoués dans l'ordre chronologique
+avec<00:03:58.880><c> exactement</c><00:03:59.360><c> les</c><00:03:59.480><c> mêmes</c><00:03:59.680><c> règles</c><00:03:59.960><c> que</c>
+
+00:04:00.070 --> 00:04:00.080 align:start position:0%
+avec exactement les mêmes règles que
+ 
+
+00:04:00.080 --> 00:04:01.190 align:start position:0%
+avec exactement les mêmes règles que
+l'API.
+
+00:04:01.190 --> 00:04:01.200 align:start position:0%
+l'API.
+ 
+
+00:04:01.200 --> 00:04:02.550 align:start position:0%
+l'API.
+Les<00:04:01.280><c> historiques</c><00:04:01.760><c> et</c><00:04:01.800><c> les</c><00:04:01.880><c> statuts</c><00:04:02.280><c> restent</c>
+
+00:04:02.550 --> 00:04:02.560 align:start position:0%
+Les historiques et les statuts restent
+ 
+
+00:04:02.560 --> 00:04:07.510 align:start position:0%
+Les historiques et les statuts restent
+donc<00:04:02.760><c> parfaitement</c><00:04:03.240><c> cohérents.</c>
+
+00:04:07.510 --> 00:04:07.520 align:start position:0%
+ 
+ 
+
+00:04:07.520 --> 00:04:09.470 align:start position:0%
+ 
+Toutes<00:04:07.640><c> les</c><00:04:07.760><c> routes,</c><00:04:08.240><c> 32</c><00:04:08.720><c> au</c><00:04:08.840><c> total,</c><00:04:09.360><c> sont</c>
+
+00:04:09.470 --> 00:04:09.480 align:start position:0%
+Toutes les routes, 32 au total, sont
+ 
+
+00:04:09.480 --> 00:04:11.590 align:start position:0%
+Toutes les routes, 32 au total, sont
+documentées<00:04:10.000><c> dans</c><00:04:10.200><c> le</c><00:04:10.360><c> Swagger.</c>
+
+00:04:11.590 --> 00:04:11.600 align:start position:0%
+documentées dans le Swagger.
+ 
+
+00:04:11.600 --> 00:04:13.390 align:start position:0%
+documentées dans le Swagger.
+Qui<00:04:11.680><c> peut</c><00:04:11.800><c> y</c><00:04:11.880><c> accéder,</c><00:04:12.480><c> les</c><00:04:12.640><c> paramètres</c><00:04:13.280><c> et</c>
+
+00:04:13.390 --> 00:04:13.400 align:start position:0%
+Qui peut y accéder, les paramètres et
+ 
+
+00:04:13.400 --> 00:04:15.550 align:start position:0%
+Qui peut y accéder, les paramètres et
+chaque<00:04:13.640><c> code</c><00:04:13.840><c> de</c><00:04:13.959><c> retour</c><00:04:14.200><c> possible.</c><00:04:15.200><c> L'équipe</c>
+
+00:04:15.550 --> 00:04:15.560 align:start position:0%
+chaque code de retour possible. L'équipe
+ 
+
+00:04:15.560 --> 00:04:17.150 align:start position:0%
+chaque code de retour possible. L'équipe
+front<00:04:15.840><c> peut</c><00:04:15.959><c> donc</c><00:04:16.160><c> tester</c><00:04:16.400><c> l'API</c><00:04:16.720><c> directement</c>
+
+00:04:17.150 --> 00:04:17.160 align:start position:0%
+front peut donc tester l'API directement
+ 
+
+00:04:17.160 --> 00:04:18.670 align:start position:0%
+front peut donc tester l'API directement
+dans<00:04:17.280><c> le</c><00:04:17.359><c> navigateur</c>
+
+00:04:18.670 --> 00:04:18.680 align:start position:0%
+dans le navigateur
+ 
+
+00:04:18.680 --> 00:04:20.670 align:start position:0%
+dans le navigateur
+et<00:04:18.720><c> le</c><00:04:18.840><c> déploiement</c><00:04:19.320><c> est</c><00:04:19.519><c> automatisé.</c>
+
+00:04:20.670 --> 00:04:20.680 align:start position:0%
+et le déploiement est automatisé.
+ 
+
+00:04:20.680 --> 00:04:21.990 align:start position:0%
+et le déploiement est automatisé.
+Chaque<00:04:20.920><c> push</c><00:04:21.120><c> sur</c><00:04:21.239><c> la</c><00:04:21.320><c> branche</c><00:04:21.560><c> principale</c>
+
+00:04:21.990 --> 00:04:22.000 align:start position:0%
+Chaque push sur la branche principale
+ 
+
+00:04:22.000 --> 00:04:24.550 align:start position:0%
+Chaque push sur la branche principale
+déclenche<00:04:22.360><c> GitHub</c><00:04:22.720><c> Actions</c><00:04:23.840><c> qui</c><00:04:23.880><c> reconstruit</c>
+
+00:04:24.550 --> 00:04:24.560 align:start position:0%
+déclenche GitHub Actions qui reconstruit
+ 
+
+00:04:24.560 --> 00:04:25.750 align:start position:0%
+déclenche GitHub Actions qui reconstruit
+et<00:04:24.680><c> relance</c><00:04:25.000><c> les</c><00:04:25.120><c> conteneurs</c><00:04:25.520><c> sur</c><00:04:25.680><c> le</c>
+
+00:04:25.750 --> 00:04:25.760 align:start position:0%
+et relance les conteneurs sur le
+ 
+
+00:04:25.760 --> 00:04:27.830 align:start position:0%
+et relance les conteneurs sur le
+serveur.
+
+00:04:27.830 --> 00:04:27.840 align:start position:0%
+serveur.
+ 
+
+00:04:27.840 --> 00:04:29.790 align:start position:0%
+serveur.
+En<00:04:27.919><c> résumé,</c><00:04:28.560><c> une</c><00:04:28.720><c> API</c><00:04:29.040><c> sécurisée,</c>
+
+00:04:29.790 --> 00:04:29.800 align:start position:0%
+En résumé, une API sécurisée,
+ 
+
+00:04:29.800 --> 00:04:31.950 align:start position:0%
+En résumé, une API sécurisée,
+documentée,<00:04:30.600><c> traçable</c><00:04:31.240><c> et</c><00:04:31.360><c> déployée</c><00:04:31.840><c> en</c>
+
+00:04:31.950 --> 00:04:31.960 align:start position:0%
+documentée, traçable et déployée en
+ 
+
+00:04:31.960 --> 00:04:34.350 align:start position:0%
+documentée, traçable et déployée en
+continu<00:04:32.960><c> qui</c><00:04:33.000><c> met</c><00:04:33.160><c> en</c><00:04:33.320><c> relation</c><00:04:33.720><c> candidats</c><00:04:34.280><c> et</c>
+
+00:04:34.350 --> 00:04:34.360 align:start position:0%
+continu qui met en relation candidats et
+ 
+
+00:04:34.360 --> 00:04:36.909 align:start position:0%
+continu qui met en relation candidats et
+recruteurs<00:04:34.960><c> autour</c><00:04:35.120><c> des</c><00:04:35.320><c> offres</c><00:04:35.560><c> de</c><00:04:35.640><c> l'OPT.</c>
+
+00:04:36.909 --> 00:04:36.919 align:start position:0%
+recruteurs autour des offres de l'OPT.
+ 
+
+00:04:36.919 --> 00:04:38.750 align:start position:0%
+recruteurs autour des offres de l'OPT.
+Nous<00:04:37.040><c> remercions</c><00:04:37.440><c> chaleureusement</c><00:04:38.080><c> l'OPT</c><00:04:38.680><c> et</c>
+
+00:04:38.750 --> 00:04:38.760 align:start position:0%
+Nous remercions chaleureusement l'OPT et
+ 
+
+00:04:38.760 --> 00:04:40.670 align:start position:0%
+Nous remercions chaleureusement l'OPT et
+l'IAE<00:04:39.120><c> pour</c><00:04:39.280><c> ce</c><00:04:39.360><c> défi</c><00:04:40.320><c> et</c><00:04:40.360><c> pour</c><00:04:40.520><c> leur</c>
+
+00:04:40.670 --> 00:04:40.680 align:start position:0%
+l'IAE pour ce défi et pour leur
+ 
+
+00:04:40.680 --> 00:04:42.870 align:start position:0%
+l'IAE pour ce défi et pour leur
+accompagnement<00:04:41.240><c> tout</c><00:04:41.440><c> au</c><00:04:41.480><c> long</c><00:04:41.600><c> du</c><00:04:41.720><c> projet.</c>
+
+00:04:42.870 --> 00:04:42.880 align:start position:0%
+accompagnement tout au long du projet.
+ 
+
+00:04:42.880 --> 00:04:44.590 align:start position:0%
+accompagnement tout au long du projet.
+Merci<00:04:43.200><c> à</c><00:04:43.280><c> vous</c><00:04:43.400><c> pour</c><00:04:43.520><c> votre</c><00:04:43.800><c> attention</c><00:04:44.400><c> et</c><00:04:44.520><c> à</c>
+
+00:04:44.590 --> 00:04:44.600 align:start position:0%
+Merci à vous pour votre attention et à
+ 
+
+00:04:44.600 --> 00:04:47.080 align:start position:0%
+Merci à vous pour votre attention et à
+bientôt.
+
