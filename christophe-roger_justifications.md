@@ -2,9 +2,9 @@
 
 **Version du 26 octobre 2026 — 11 projets, 22 critères par projet, notation sur 100.**
 
-Ce document accompagne `christophe-roger_grille_hackavp_notation.csv`. Il reprend les notes validées par Christophe Roger après une préparation assistée par IA. Chaque projet comporte une appréciation d’ensemble, les notes par critère et les références qui permettent de les relire. Les commentaires et les notes globales correspondent au CSV.
+Ce document accompagne `christophe-roger_grille_hackavp_notation.csv`. Il présente l’évaluation conduite par Christophe Roger avec une assistance IA. Chaque projet comporte une appréciation d’ensemble, les notes par critère et les références qui permettent de les relire. Les commentaires et les notes globales correspondent au CSV.
 
-J’ai utilisé une assistance IA, notamment pour maintenir la cohérence des critères et des choix de notation au fil de la revue, ainsi que pour générer et contrôler les livrables (CSV, classeur et document de justifications). J’ai examiné les propositions et validé les arbitrages et les notes finales, dont je conserve la responsabilité.
+J’ai conduit cette évaluation avec une assistance IA pour analyser les rendus et discuter des propositions de notes et de justifications. Au fil de la revue, j’ai choisi ou ajusté certaines notes, réorienté l’interprétation et l’application des critères, et arrêté l’évaluation finale. L’IA m’a également aidé à maintenir la cohérence de ces choix entre les projets, ainsi qu’à générer et contrôler les livrables (CSV, classeur et document de justifications). Cette mention explicite l’assistance utilisée ; l’appréciation et les décisions de notation relèvent de mon jugement de juré.
 
 ## Comment les notes ont été établies
 
