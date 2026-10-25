@@ -4,6 +4,8 @@
 
 Ce document accompagne `christophe-roger_grille_hackavp_notation.csv`. Il reprend les notes validées par Christophe Roger après une préparation assistée par IA. Chaque projet comporte une appréciation d’ensemble, les notes par critère et les références qui permettent de les relire. Les commentaires et les notes globales correspondent au CSV.
 
+J’ai utilisé une assistance IA, notamment pour maintenir la cohérence des critères et des choix de notation au fil de la revue, ainsi que pour générer et contrôler les livrables (CSV, classeur et document de justifications). J’ai examiné les propositions et validé les arbitrages et les notes finales, dont je conserve la responsabilité.
+
 ## Comment les notes ont été établies
 
 L’évaluation s’appuie sur les articles, les vidéos et leurs retranscriptions, ainsi que sur les pièces remises effectivement examinées. Des passages vidéo ont fait l’objet de contrôles visuels ciblés. Aucun test indépendant des services ni nouveau complément demandé aux équipes ne vient s’ajouter au rendu.
