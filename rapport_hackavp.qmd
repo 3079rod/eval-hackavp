@@ -403,9 +403,13 @@ plot_track("onPrem souverain")
 tab_track("onPrem souverain")
 ```
 
+\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
+
 ```{r tab-onprem-eval}
 tab_eval_track("onPrem souverain")
 ```
+
+\endgroup
 
 # Classement de la track SaaS no limit
 
@@ -420,9 +424,13 @@ plot_track("SaaS no limit")
 tab_track("SaaS no limit")
 ```
 
+\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
+
 ```{r tab-saas-eval}
 tab_eval_track("SaaS no limit")
 ```
+
+\endgroup
 
 # Classement global, toutes tracks confondues
 
@@ -559,7 +567,7 @@ ggplot(rangs, aes(x = as.integer(nom), y = rang, group = label, colour = piste))
   geom_text(data = bords, aes(label = label), hjust = 0, nudge_x = 0.12, size = 2.4, family = "Inter",
             show.legend = FALSE) +
   scale_y_reverse(breaks = 1:11) +
-  scale_x_continuous(breaks = seq_len(n_eval), labels = levels(rangs$nom),
+  scale_x_continuous(breaks = seq_len(n_eval), labels = str_replace(levels(rangs$nom), " ", "\n"),
                      expand = expansion(add = c(0.3, 1.6))) +
   scale_colour_manual(values = c(onPrem = pal$s1, SaaS = pal$s2)) +
   labs(title = "Rang de chaque projet selon chaque évaluateur",
@@ -667,10 +675,14 @@ ecarts <- tot |>
             .groups = "drop")
 ```
 
+\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
+
 ```{r tab-correlations}
 kable(round(cor_tab, 2),
       caption = "Corrélation des notes totales entre évaluateurs (projets notés en commun)")
 ```
+
+\endgroup
 
 ```{r tab-biais}
 ecarts |>
@@ -853,6 +865,8 @@ rea |>
 
 # Annexe : notes détaillées
 
+\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
+
 ```{r tab-annexe}
 tot |>
   select(num, nom, total) |>
@@ -863,8 +877,11 @@ tot |>
   arrange(num) |>
   select(num, lien_court, piste, any_of(evals$nom)) |>
   rename(`N°` = num, Projet = lien_court, Piste = piste) |>
-  kable(caption = "Note totale /100 de chaque évaluateur (— : non noté)")
+  (\(t) kable(t, align = paste0("rll", strrep("r", ncol(t) - 3)),
+              caption = "Note totale /100 de chaque évaluateur (— : non noté)"))()
 ```
+
+\endgroup
 
 ```{r cleanup}
 dbDisconnect(con, shutdown = TRUE)
