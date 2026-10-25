@@ -4,19 +4,17 @@
 
 Ce document accompagne `christophe-roger_grille_hackavp_notation.csv`. Il présente l’évaluation conduite par Christophe Roger avec une assistance IA. Chaque projet comporte une appréciation d’ensemble, les notes par critère et les références qui permettent de les relire. Les commentaires et les notes globales correspondent au CSV.
 
-J’ai conduit cette évaluation avec une assistance IA pour analyser les rendus et discuter des propositions de notes et de justifications. Au fil de la revue, j’ai choisi ou ajusté certaines notes, réorienté l’interprétation et l’application des critères, et arrêté l’évaluation finale. L’IA m’a également aidé à maintenir la cohérence de ces choix entre les projets, ainsi qu’à générer et contrôler les livrables (CSV, classeur et document de justifications). Cette mention explicite l’assistance utilisée ; l’appréciation et les décisions de notation relèvent de mon jugement de juré.
+J’ai utilisé une assistance IA pour maintenir la cohérence des critères et des choix de notation, ainsi que pour générer et contrôler les livrables. Les choix de notation et les arbitrages sont les miens.
 
 ## Comment les notes ont été établies
 
-L’évaluation s’appuie sur les articles, les vidéos et leurs retranscriptions, ainsi que sur les pièces remises effectivement examinées. Des passages vidéo ont fait l’objet de contrôles visuels ciblés. Aucun test indépendant des services ni nouveau complément demandé aux équipes ne vient s’ajouter au rendu.
+J’ai lu directement tous les articles et regardé toutes les vidéos. Les retranscriptions ont servi d’appui au travail préparatoire avec l’IA. Les pièces remises examinées complètent cette lecture. Aucun test indépendant des services ni nouveau complément demandé aux équipes ne vient s’ajouter au rendu.
 
 Chaque projet est apprécié pour ce qu’il apporte lui-même. Un contrat ou une architecture bien expliqué peut justifier des points sans exiger une démonstration de toute la chaîne collective. Les résultats d’une autre équipe ne lui sont pas attribués. La restitution et l’effet sur la décision peuvent concerner le candidat, le recruteur ou le pilotage RH, selon le projet.
 
 Les 22 critères sont tous notés. Lorsque le rendu ne donne aucun élément permettant des points, la note est zéro ; une note partielle reconnaît les éléments effectivement décrits ou montrés. Le bonus d’interaction est compris dans le barème sur 100, sans renormalisation. Les profils JSON Resume et Europass de CV FORGE sont reconnus comme des documents structurés.
 
 Les tracks déclarées sont conservées. Une localisation non établie n’est pas assimilée à une exécution hors Nouvelle-Calédonie. Les dates de modification signalées ci-dessous sont celles relevées lors de la revue des sources : elles ne constituent pas une archive du contenu présent à la clôture du 21 octobre.
-
-Le plaisir de visionnage de CV FORGE, d’Adopte un Job et de HACKAVPI reprend l’appréciation directe du juré. Pour les autres projets, cette note porte sur le propos transcrit et ne prétend pas évaluer le son ou le montage.
 
 Cadre : [présentation du hackathon](https://dev.to/adriens/hackavp-premier-hackathon-dedie-a-lemploi-dans-la-fonction-publique-en-ncl-3oj0), [guide du jury et liste des soumissions](https://dev.to/adriens/hackavp-guide-devaluation-pour-les-membres-du-jury-12i0), [dépôt d’évaluation](https://github.com/adriens/eval-hackavp).
 
@@ -62,7 +60,7 @@ La solution permet de produire un CV à partir d’un profil et d’une offre, a
 | Storytelling | **3,5/4** | Le besoin, l’architecture et le parcours se comprennent facilement. La démonstration produit le CV, mais ne montre pas la génération de la lettre et du guide également annoncés. | [Vidéo](https://www.youtube.com/watch?v=sNb1rM0gVDE&t=41s) — 0:41–1:18 ; 2:37–3:48 |
 | Réutilisabilité & essaimage | **4/4** | L’API documentée, la séparation des services et les conteneurs donnent de bons moyens de reprendre la solution dans un autre contexte. | [Article](https://dev.to/spewq/hackavp-cv-generator-la-solution-de-preparation-de-candidature-1p30) — Qualité, tests et déploiement ; dépôt lié |
 | Plaisir de lecture | **4/4** | Le parcours de Camille et l’analogie de la quête rendent l’article agréable. Les explications de code, de prompts et d’architecture enrichissent la lecture pour un développeur. | [Article](https://dev.to/spewq/hackavp-cv-generator-la-solution-de-preparation-de-candidature-1p30) — Un lagon d'offres ; parcours de Camille ; Architecture |
-| Plaisir de visionnage | **3,5/4** | Le propos suit quatre étapes claires et mène à la génération puis à l’aperçu du CV. Cette appréciation porte sur le contenu transcrit, sans jugement sur le son ou le montage. | [Vidéo](https://www.youtube.com/watch?v=sNb1rM0gVDE&t=17s) — 0:17–0:40 ; 2:37–3:48 |
+| Plaisir de visionnage | **3,5/4** | Le propos suit quatre étapes claires et mène à la génération puis à l’aperçu du CV. | [Vidéo](https://www.youtube.com/watch?v=sNb1rM0gVDE&t=17s) — 0:17–0:40 ; 2:37–3:48 |
 
 ### Technicité — 18/25
 
@@ -121,7 +119,7 @@ Le tableau de bord donne une lecture utile des recrutements et aide à repérer 
 | Storytelling | **3,5/4** | La progression des mesures vers les actions est claire. L’article distingue honnêtement ce qui existe de ce qui reste envisagé. | [Vidéo](https://www.youtube.com/watch?v=a3MfiMyH_nA&t=127s) — 2:07–3:10 ; 4:11–4:23 |
 | Réutilisabilité & essaimage | **2,5/4** | Une autre source de données pourrait remplacer l’API. La reprise dépend toutefois du modèle retenu et des conditions de publication dans l’environnement Microsoft. | [Article](https://dev.to/elodie_tran_data/et-si-les-donnees-du-recrutement-repondaient-a-nos-questions--1d5o) — Interopérabilité ; suite logique |
 | Plaisir de lecture | **3,5/4** | Le problème, les indicateurs et les actions possibles s’enchaînent bien. La place donnée à l’assistant futur est un peu importante par rapport au cockpit livré. | [Article](https://dev.to/elodie_tran_data/et-si-les-donnees-du-recrutement-repondaient-a-nos-questions--1d5o) — L'angle mort ; Quels indicateurs ; La suite logique |
-| Plaisir de visionnage | **3,5/4** | Le propos explique clairement la boucle mesure-action et les indicateurs. L’appréciation porte sur la transcription, sans jugement sur le son ni le montage. | [Vidéo](https://www.youtube.com/watch?v=a3MfiMyH_nA&t=21s) — 0:21–0:54 ; 1:20–2:43 ; 3:56–4:23 |
+| Plaisir de visionnage | **3,5/4** | Le propos explique clairement la boucle mesure-action et les indicateurs. | [Vidéo](https://www.youtube.com/watch?v=a3MfiMyH_nA&t=21s) — 0:21–0:54 ; 1:20–2:43 ; 3:56–4:23 |
 
 ### Technicité — 14/25
 
@@ -180,7 +178,7 @@ Le travail d’organisation est sérieux : les rôles sont clairs et les échang
 | Storytelling | **3,5/4** | Les dépendances et les difficultés de coordination sont bien racontées. L’annonce d’un flux complet est toutefois à rapprocher d’une vidéo où le raccordement du générateur reste à venir. | [Article](https://dev.to/maud_granger_nc/jobmatch-nc-quand-linteroperabilite-devient-plus-quun-defi-technique-1ma) — La logique du MVP |
 | Réutilisabilité & essaimage | **3/4** | La répartition des responsabilités et les enseignements sont transférables. Les procédures et les adaptations à prévoir dans un autre contexte restent assez générales. | [Article](https://dev.to/maud_granger_nc/jobmatch-nc-quand-linteroperabilite-devient-plus-quun-defi-technique-1ma) — Sept micro-startups ; au-delà du hackathon |
 | Plaisir de lecture | **3,5/4** | L’article aide à comprendre les équipes et leurs difficultés. Les rappels sur la nécessité de faire communiquer les briques deviennent parfois répétitifs. | [Article](https://dev.to/maud_granger_nc/jobmatch-nc-quand-linteroperabilite-devient-plus-quun-defi-technique-1ma) — Sept micro-startups ; Coordonner l'ensemble ; Ce que ce projet m'a appris |
-| Plaisir de visionnage | **3/4** | Le récit explique la naissance du collectif et les flux entre modules. Certains passages restent abstraits et répètent le message de coordination ; l’appréciation porte sur le propos transcrit. | [Vidéo](https://www.youtube.com/watch?v=snGr9dbooWY&t=42s) — 0:42–1:56 ; 1:58–3:16 ; 3:19–4:45 |
+| Plaisir de visionnage | **3/4** | Le récit explique la naissance du collectif et les flux entre modules. Certains passages restent abstraits et répètent le message de coordination. | [Vidéo](https://www.youtube.com/watch?v=snGr9dbooWY&t=42s) — 0:42–1:56 ; 1:58–3:16 ; 3:19–4:45 |
 
 ### Technicité — 16,5/25
 
@@ -239,7 +237,7 @@ Une démonstration convaincante, avec un parcours recruteur clair et des explica
 | Storytelling | **4/4** | Le problème recruteur, les étapes et les arbitrages sont exposés avec des exemples précis. Le récit permet de comprendre les choix. | [Article](https://dev.to/sh0ck3r/hackavp-avpro-lespace-recruteur-qui-remplace-la-boite-mail-par-un-swipe-et-explique-chaque-10ph) — Nos arbitrages ; parcours |
 | Réutilisabilité & essaimage | **3,5/4** | Le front statique et l’adaptateur centralisé facilitent la reprise. La procédure d’adaptation à un autre contexte est un peu moins développée. | [Article](https://dev.to/sh0ck3r/hackavp-avpro-lespace-recruteur-qui-remplace-la-boite-mail-par-un-swipe-et-explique-chaque-10ph) — Un seul fichier ; Et ensuite |
 | Plaisir de lecture | **4/4** | Le parcours, les arbitrages et les extraits de code rendent l’article concret et agréable. Les détails techniques participent ici au plaisir de lecture. | [Article](https://dev.to/sh0ck3r/hackavp-avpro-lespace-recruteur-qui-remplace-la-boite-mail-par-un-swipe-et-explique-chaque-10ph) — Parcours recruteur ; Sous le capot ; Nos arbitrages |
-| Plaisir de visionnage | **3,5/4** | La présentation suit un ordre clair : connexion, compréhension du score, décision puis entretien. La fin est assez dense techniquement ; l’appréciation reste limitée au propos transcrit. | [Vidéo](https://www.youtube.com/watch?v=tjHP83BT0JM&t=55s) — 0:55–2:22 ; 2:26–3:25 |
+| Plaisir de visionnage | **3,5/4** | La présentation suit un ordre clair : connexion, compréhension du score, décision puis entretien. La fin est assez dense techniquement. | [Vidéo](https://www.youtube.com/watch?v=tjHP83BT0JM&t=55s) — 0:55–2:22 ; 2:26–3:25 |
 
 ### Technicité — 18,5/25
 
@@ -418,7 +416,7 @@ Les explications par compétence sont un vrai point fort : elles permettent de c
 | Storytelling | **4/4** | L’analogie des deux enquêteurs et le récit des essais expliquent bien la méthode. L’article distingue le PC, l’installation locale et la vitrine Hugging Face. | [Article](https://dev.to/jocc0/cv-matching-le-bon-profil-preuves-a-lappui-hackavp-4oh8) — Le jour où ; Petit PC |
 | Réutilisabilité & essaimage | **4/4** | L’image Docker, les modèles embarqués, l’API et les outils MCP facilitent la reprise. Plusieurs modes d’exécution sont décrits. | [Article](https://dev.to/jocc0/cv-matching-le-bon-profil-preuves-a-lappui-hackavp-4oh8) — Une brique ; Petit PC |
 | Plaisir de lecture | **4/4** | L’analogie rend la méthode accessible. Les exemples et les résultats moins favorables rendent le récit concret et crédible. | [Article](https://dev.to/jocc0/cv-matching-le-bon-profil-preuves-a-lappui-hackavp-4oh8) — Deux enquêteurs ; Le jour où j'ai arrêté de croire mes intuitions ; Petit PC |
-| Plaisir de visionnage | **3,5/4** | Le besoin, les deux sens du classement et les limites sont expliqués clairement malgré la densité. Cette appréciation porte sur le propos transcrit. | [Vidéo](https://www.youtube.com/watch?v=KbRVm8iZH5A&t=13s) — 0:13–1:41 ; 1:46–3:03 |
+| Plaisir de visionnage | **3,5/4** | Le besoin, les deux sens du classement et les limites sont expliqués clairement malgré la densité. | [Vidéo](https://www.youtube.com/watch?v=KbRVm8iZH5A&t=13s) — 0:13–1:41 ; 1:46–3:03 |
 
 ### Technicité — 20/25
 
@@ -478,7 +476,7 @@ L’intention est compréhensible, mais le rendu donne trop peu de matière pour
 | Storytelling | **2/4** | Le problème et les deux publics se comprennent. Le récit reste cependant général et montre peu de réalisations concrètes. | [Vidéo](https://www.youtube.com/watch?v=K3clM7j3QQI&t=1s) — 0:01–1:36 |
 | Réutilisabilité & essaimage | **1/4** | L’idée pourrait être reprise, mais l’article ne fournit ni code, ni configuration, ni mode d’emploi pour le faire. | [Article](https://dev.to/japheth_roko_98b65d73fb64/opt--2abd) — Article complet |
 | Plaisir de lecture | **2/4** | Le texte court permet de distinguer les deux publics. Le manque d’exemples et d’explications limite l’intérêt de la lecture. | [Article](https://dev.to/japheth_roko_98b65d73fb64/opt--2abd) — Gemini accompagne les candidats ; Vertex AI aide les équipes RH |
-| Plaisir de visionnage | **2/4** | Le propos est bref, mais répète surtout les bénéfices attendus sans dérouler de scénario. L’appréciation porte sur le contenu transcrit. | [Vidéo](https://www.youtube.com/watch?v=K3clM7j3QQI&t=20s) — 0:20–1:36 |
+| Plaisir de visionnage | **2/4** | Le propos est bref, mais répète surtout les bénéfices attendus sans dérouler de scénario. | [Vidéo](https://www.youtube.com/watch?v=K3clM7j3QQI&t=20s) — 0:20–1:36 |
 
 ### Technicité — 4/25
 
@@ -537,7 +535,7 @@ L’idée est simple et utile : partir des offres pour préparer une candidature
 | Storytelling | **3/4** | Le cas concret et la revue des trois documents rendent la démarche compréhensible. L’article est bref et l’enregistrement Drive annoncé reste à distinguer de ce qui est visible. | [Vidéo longue](https://www.youtube.com/watch?v=05iDCkPfRCs&t=526s) — 8:46–11:50 |
 | Réutilisabilité & essaimage | **2,5/4** | La démarche et la source RSS sont accessibles. Les paramètres du profil et des connecteurs sont moins formalisés ; un mode d’emploi complet aiderait à les reprendre. | [Vidéo](https://www.youtube.com/watch?v=mqHSh_MxA5A&t=19s) — 0:19–1:28 |
 | Plaisir de lecture | **2/4** | L’article donne vite le contexte, mais laisse l’essentiel des explications aux vidéos. Sa lecture seule apporte assez peu de détails sur la démarche. | [Article](https://dev.to/adriens/pendant-un-hackathon-data-je-trouve-une-opportunite-de-cdo-dans-ma-propre-entreprise-4bp9) — Contexte ; Ce qui est démontré ; Conclusion |
-| Plaisir de visionnage | **2,5/4** | La conversation et la revue des documents sont intéressantes. La vidéo longue consacre toutefois plusieurs minutes au RSS avant d’aborder le scénario principal ; l’appréciation porte sur le propos. | [Vidéo longue](https://www.youtube.com/watch?v=05iDCkPfRCs&t=69s) — 1:09–4:26 ; 4:29–8:42 ; 8:46–11:50 |
+| Plaisir de visionnage | **2,5/4** | La conversation et la revue des documents sont intéressantes. La vidéo longue consacre toutefois plusieurs minutes au RSS avant d’aborder le scénario principal. | [Vidéo longue](https://www.youtube.com/watch?v=05iDCkPfRCs&t=69s) — 1:09–4:26 ; 4:29–8:42 ; 8:46–11:50 |
 
 ### Technicité — 13/25
 
@@ -597,7 +595,7 @@ Le travail sur les offres et le référentiel ESCO est intéressant et bien expl
 | Storytelling | **3,5/4** | La méthode en trois étapes est claire. Les limites de la validation automatique et l’usage final pourraient être davantage développés. | [Article](https://dev.to/adriens/jai-mappe-les-offres-demploi-public-de-lopt-nc-avec-le-referentiel-esco-a-laide-dembeddings-5765) — Expérimentation ; Perspectives |
 | Réutilisabilité & essaimage | **4/4** | Le notebook et les données préparées donnent de bons moyens de reprendre l’analyse sur un autre corpus. | [Article](https://dev.to/adriens/jai-mappe-les-offres-demploi-public-de-lopt-nc-avec-le-referentiel-esco-a-laide-dembeddings-5765) — Ressources |
 | Plaisir de lecture | **3/4** | La méthode et les ressources sont faciles à repérer. Plusieurs résultats passent surtout par les figures et sont accompagnés de peu de texte explicatif. | [Article](https://dev.to/adriens/jai-mappe-les-offres-demploi-public-de-lopt-nc-avec-le-referentiel-esco-a-laide-dembeddings-5765) — L'expérimentation ; Les découvertes ; Ressources |
-| Plaisir de visionnage | **3/4** | Le commentaire guide l’exploration et donne des exemples. Le parcours reste assez exploratoire et pourrait être davantage synthétisé ; l’appréciation porte sur le propos transcrit. | [Vidéo](https://www.youtube.com/watch?v=cKV_tJ6qdSo&t=38s) — 0:38–1:53 ; 2:45–5:02 |
+| Plaisir de visionnage | **3/4** | Le commentaire guide l’exploration et donne des exemples. Le parcours reste assez exploratoire et pourrait être davantage synthétisé. | [Vidéo](https://www.youtube.com/watch?v=cKV_tJ6qdSo&t=38s) — 0:38–1:53 ; 2:45–5:02 |
 
 ### Technicité — 19/25
 
